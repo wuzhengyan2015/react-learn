@@ -7,11 +7,24 @@ module.exports = {
         path: __dirname + '/dist'
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
+            },
+            {
+                test: /\.(css|scss)$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8192
+                    }
+                }]
             }
         ]
     },
