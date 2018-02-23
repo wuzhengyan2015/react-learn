@@ -6,6 +6,9 @@ module.exports = {
         filename: 'bundle.js',
         path: __dirname + '/dist'
     },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
     module: {
         rules: [{
                 test: /\.(js|jsx)$/,
@@ -35,6 +38,7 @@ module.exports = {
     ],
     devServer: {
         inline: true,
-        historyApiFallback: true
+        historyApiFallback: true,
+        open: true
     }
 }
