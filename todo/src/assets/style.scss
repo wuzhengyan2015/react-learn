@@ -69,7 +69,7 @@
 .list-group-item {
     position: relative;
     display: block;
-    padding: 10px 15px;
+    padding: 10px 15px 10px 40px;
     margin-bottom: -1px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -171,5 +171,13 @@ a {
     content:""; 
     display: block; 
     clear:both; 
-
+ }
+ .todo-item-btn {
+     position: absolute;
+     left: 0;
+     top: 0;
+     width: 52px;
+     height: 38px;
+     line-height: 38px;
+     background: url('/src/assets/images/icon-correct-dis.png');
  }

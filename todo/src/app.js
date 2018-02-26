@@ -5,7 +5,7 @@ import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 import {todoReducer, visibilityFilter} from './reducers/index'
 import {BrowserRouter as Router} from 'react-router-dom'
-import Todo from './pages/Todo/index'
+import Home from './pages/Home/index'
 
 const store = createStore(combineReducers({
     todos: todoReducer,
@@ -15,7 +15,7 @@ const store = createStore(combineReducers({
 ReactDom.render(
     <Provider store={store}>
        <Router>
-           <Todo />
+           <Home />
         </Router>
     </Provider>,
     document.getElementById('app')
