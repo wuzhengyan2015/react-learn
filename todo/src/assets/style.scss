@@ -4,9 +4,10 @@
     background-color: #fff;
     border: 1px solid #337ab7;
     border-radius: 4px;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
+
 .todo-title {
     color: #fff;
     background-color: #337ab7;
@@ -37,10 +38,12 @@
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
 }
+
 .todo-add-input:focus {
     outline: 0;
     border-color: #66afe9;
 }
+
 .todo-add-btn {
     display: inline-block;
     width: 54px;
@@ -107,6 +110,7 @@
     border: 1px solid transparent;
     border-radius: 4px;
 }
+
 .btn-group {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -114,70 +118,120 @@
     display: inline-block;
     vertical-align: middle;
 }
+
 .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
+
 .btn-group>.btn:first-child {
     margin-left: 0;
 }
-.btn-group-vertical>.btn, .btn-group>.btn {
+
+.btn-group-vertical>.btn,
+.btn-group>.btn {
     position: relative;
     float: left;
 }
+
 .btn-default {
     color: #333;
     background-color: #fff;
     border-color: #ccc;
 }
-.btn-group .btn+.btn, .btn-group .btn+.btn-group, .btn-group .btn-group+.btn, .btn-group .btn-group+.btn-group {
+
+.btn-group .btn+.btn,
+.btn-group .btn+.btn-group,
+.btn-group .btn-group+.btn,
+.btn-group .btn-group+.btn-group {
     margin-left: -1px;
 }
-ol, ul {
+
+ol,
+ul {
     margin-top: 0;
     margin-bottom: 10px;
 }
+
 .nav {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
     padding: 0 12px 12px;
 }
+
 .nav>li {
     position: relative;
     display: block;
 }
+
 .nav-pills>li {
     float: left;
 }
+
 a {
     color: #337ab7;
     text-decoration: none;
     cursor: pointer
 }
+
 .nav>li>a {
     position: relative;
     display: block;
     padding: 10px 15px;
 }
+
 .nav-pills>li>a {
     border-radius: 4px;
 }
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
     color: #fff;
     background-color: #337ab7;
 }
+
 .clearfix:after {
-    content:""; 
-    display: block; 
-    clear:both; 
- }
- .todo-item-btn {
-     position: absolute;
-     left: 0;
-     top: 0;
-     width: 52px;
-     height: 38px;
-     line-height: 38px;
-     background: url('/src/assets/images/icon-correct-dis.png');
- }
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.todo-item-btn {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    width: 28px;
+    height: 28px;
+    margin-top: -14px;
+    border: 2px solid #dbdbdb;
+    border-radius: 50%;
+    background: url('./images/icon-correct-dis.png') no-repeat center center;
+}
+
+.list-group-item.completed .todo-item-btn {
+    background-image: url('./images/icon-correct.png');
+    border-color: #337ab7
+}
+.list-group-item:hover .todo-delete-btn {
+    display: block;
+}
+.list-group-item.completed span {
+    text-decoration: line-through
+}
+
+.todo-delete-btn {
+    display: none;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    width: 28px;
+    height: 28px;
+    margin-top: -14px;
+    line-height: 24px;
+    color: #dbdbdb;
+    border: 2px solid #dbdbdb;
+    text-align: center;
+    border-radius: 50%;
+}

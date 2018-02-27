@@ -1,8 +1,6 @@
 export const ADD_TODO = 'ADD_TODO'
 export const DELETE_TODO = 'DELETE_TODO'
 export const FILTER_TODO = 'FILTER_TODO'
-export const FINISH_TODO = 'FINISH_TODO'
-export const UNFINISH_TODO = 'UNFINISH_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 
 export function addTodo(data) {
@@ -19,13 +17,6 @@ export function deleteTodo(data) {
     }
 }
 
-export function finishTodo(data) {
-    return {
-        type: FINISH_TODO,
-        data
-    }
-}
-
 export function filterTodo(data) {
     return {
         type: FILTER_TODO,
@@ -33,12 +24,6 @@ export function filterTodo(data) {
     }
 }
 
-export function unfinishTodo(data) {
-    return {
-        type: UNFINISH_TODO,
-        data
-    }
-}
 export function toggleTodo(data) {
     return {
         type: TOGGLE_TODO,
@@ -52,15 +37,16 @@ export function todoReducer(state = [{task: '第一个todo', completed: false}],
         case ADD_TODO:
             return [...state, action.data]
         case DELETE_TODO:
-            return state
-        case FINISH_TODO:
-            let newState = [...state]
-            newState[action.data].completed = true
-            return newState
-        case UNFINISH_TODO:
-            let newState2 = [...state]
-            newState2[action.data].completed = false
-            return newState2
+            return [...state].filter(function(item){
+                return !(item.task == action.data)
+            })
+        case TOGGLE_TODO:
+            return [...state].map(function(item){
+                if(item.task == action.data){
+                    item.completed = !item.completed
+                }
+                return item
+            })
         default:
             return state;
     }

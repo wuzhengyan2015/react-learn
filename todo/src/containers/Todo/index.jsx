@@ -1,27 +1,45 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addTodo, finishTodo, unfinishTodo, filterTodo } from '../../reducers/index'
+import { addTodo, toggleTodo, deleteTodo, filterTodo } from '../../reducers/index'
 import '../../assets/style.scss'
 import TodoList from '../../components/Todo/index'
 
 const filters = [
     { value: 'all', text: '全部' },
-    { value: 'unaccomplish', text: '待完成' },
-    { value: 'accomplish', text: '已完成' },
+    { value: 'active', text: '待完成' },
+    { value: 'completed', text: '已完成' },
 ]
 
 class Todo extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            addText: ''
+        }
         this.addTodoItem = this.addTodoItem.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleKeyPress = this.handleKeyPress.bind(this)
     }
     componentDidMount() {
         this.props.addTodo({ task: 'create my todo', completed: false })
     }
     addTodoItem() {
-        if (this.textInput.value !== '') {
-            this.props.addTodo({ task: this.textInput.value, completed: false })
-            this.textInput.value = ''
+        if (this.state.addText !== '') {
+            this.props.addTodo({ task: this.state.addText, completed: false })
+            this.setState({
+                addText: ''
+            })
+        }
+    }
+    handleChange(e) {
+        this.setState({
+            addText: e.target.value
+        })
+    }
+    handleKeyPress(e){
+        if(e.charCode === 13){
+            this.addTodoItem()
+            e.target.blur()
         }
     }
     changeFilter(filter) {
@@ -30,7 +48,7 @@ class Todo extends Component {
     filterTodos() {
         if (this.props.filter === 'all') {
             return this.props.todos
-        } else if (this.props.filter === 'unaccomplish') {
+        } else if (this.props.filter === 'active') {
             return this.props.todos.filter(function (item) {
                 return !item.completed
             })
@@ -46,11 +64,11 @@ class Todo extends Component {
             <div className="todo-app">
                 <h2 className="todo-title">Todo</h2>
                 <div className="todo-add">
-                    <input type="text" className="todo-add-input" ref={(input) => { this.textInput = input; }} />
+                    <input type="text" className="todo-add-input" value={this.state.addText} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
                     <a href="javascript:void(0);" className="todo-add-btn" onClick={this.addTodoItem}>Add</a>
                 </div>
                 <div className="todo-list">
-                    <TodoList list={this.filterTodos()} finishTodo={this.props.finishTodo} unfinishTodo={this.props.unfinishTodo}/>
+                    <TodoList list={this.filterTodos()} toggleTodo={this.props.toggleTodo} deleteTodo={this.props.deleteTodo}/>
                 </div>
                 <ul className="nav nav-pills clearfix">
                     {
@@ -79,11 +97,11 @@ const mapDispatchToProps = (dispatch) => {
         changeFilter: (data) => {
             dispatch(filterTodo(data))
         },
-        finishTodo: (index) => {
-            dispatch(finishTodo(index))
+        toggleTodo: (id) => {
+            dispatch(toggleTodo(id))
         },
-        unfinishTodo: (index) => {
-            dispatch(unfinishTodo(index))
+        deleteTodo: (id) => {
+            dispatch(deleteTodo(id))
         }
     }
 }
