@@ -20,6 +20,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         use: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
@@ -87,12 +88,7 @@ module.exports = {
     open: true,
     hot: true,
     proxy: {
-      '/api/*': {
-        target: 'http://localhost:3000',
-        secure: false,
-        changeOrigin: true,
-        pathRewrite: {"^/api" : ""}
-      }
+      "/api/*": "http://localhost:3000/$1"
     }
   },
 }
