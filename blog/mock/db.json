@@ -4,12 +4,19 @@
         "title": "json-server",
         "author": "typicode"
     }],
-    "comments": [{
-        "id": 1,
-        "body": "some comment",
-        "postId": 1
-    }],
-    "profile": {
-        "name": "typicode"
-    }
+    "articles": [{
+        "id": "article-1",
+        "article_id": "article-1",
+        "title": "for..in for..of forEach",
+        "update_time": "2018-01-04",
+        "category": "Javascript",
+        "abstract": "## for...in for...in语句以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。 ### 语法 ```js for (variable in object) {...} ``` `variable`：在每次迭代时，将不同的 ..."
+    }, {
+        "id": "article-2",
+        "article_id": "article-2",
+        "title": "一道JavaScript面试题",
+        "update_time": "2018-01-08",
+        "category": "面试 柯里化",
+        "abstract": "题目如下将以下函数补充完整：function sum(a, b, c) { } function currying(fn) { } var curry = currying(sum); console.log(currying(sum, ..."
+    }]
 }
