@@ -6,7 +6,7 @@ module.exports = {
     devtool: 'inline-source-map',  
     entry: {
         app: path.join(__dirname, 'src/index.js'),
-        vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux', 'antd',  'whatwg-fetch']
+        vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
     },
     output: {
         path: path.join(__dirname, 'dist'),
