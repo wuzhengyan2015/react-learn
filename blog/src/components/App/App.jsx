@@ -24,13 +24,17 @@ export default class App extends Component {
                     </Row>
                     <Row>
                         <Col span={13} offset={3}>
-                                {getRouter()}
+                            {getRouter()}
                         </Col>
                         <Col span={5}>
-                                <SideBar />
+                            <SideBar />
                         </Col>
                     </Row>
-                    <Footer>Footer</Footer>
+                    <Footer>
+                        <div className="ui-footer">
+                            <p>wuxy &copy; 2017-2018 All rights reserved</p>
+                        </div>
+                    </Footer>
                 </Layout>
             </div>
         )

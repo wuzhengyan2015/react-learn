@@ -16,3 +16,16 @@
     box-shadow: 0 0 5px #555;
     text-align: center
 }
+.btn-show-all {
+    display: inline-block;
+    width: 100%;
+    padding: 8px;
+    font-size: 12px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 0 5px #a8a8a8;
+    &:hover {
+        font-weight: 700;
+        box-shadow: 0 0 16px #aaa;
+    }
+}

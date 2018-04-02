@@ -4,6 +4,7 @@ import './style.scss'
 import ArticleList from '../../components/ArticleList/ArticleList'
 import {getArticleList} from '../../redux/actions/article'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 class Home extends Component {
     componentDidMount () {
@@ -24,7 +25,10 @@ class Home extends Component {
                 {
                     this.props.articles.isPending 
                     ? <div>Loading...</div> 
-                    : <ArticleList list={list}/>
+                    : <div>
+                        <ArticleList list={list}/>
+                        <Link className="btn-show-all" to="/article">查看全部文章</Link>
+                    </div>
                 }
             </div>
         )
