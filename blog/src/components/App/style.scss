@@ -1,0 +1,41 @@
+body {
+    background-color: #f9f9f9
+}
+.ui-bg-black {
+    background-color: #393D49
+}
+.ui-bg-white {
+    background-color: #ffffff
+}
+.ui-bg-blue {
+    background-color: #1E9FFF
+}
+.ui-bg-red {
+    background-color: #FF5722;
+}
+.ui-bg-orange {
+    background-color: #FFB800;
+}
+.ui-bg-green {
+    background-color: #009688
+}
+.ui-header {
+    height: 102px;
+    color: #fff;
+    padding: 0 100px;
+}
+.ui-header-title {
+    height: 56px;
+    line-height: 56px;
+    font-size: 36px;
+    margin-bottom: 0;
+    color: #fff;
+}
+.ui-header-title span:first-child {
+    color: #1E9FFF
+}
+.ui-header-desc {
+    height: 24px;
+    line-height: 24px;
+    margin-bottom: 0;
+}

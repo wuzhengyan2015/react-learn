@@ -8,7 +8,9 @@ export default class TodoList extends Component {
             <ul className="list-group">
                 {
                     this.props.list.map(function(item, index){
-                        return <Item todo={item} key={index} finishTodo={() => {_this.props.finishTodo(index)}} unfinishTodo={() => {_this.props.unfinishTodo(index)}}/>
+                        return <Item todo={item} key={index} 
+                                toggleTodo={() => {_this.props.toggleTodo(item.task)}}
+                                deleteTodo={() => {_this.props.deleteTodo(item.task)}}/>
                     })
                 }
             </ul>

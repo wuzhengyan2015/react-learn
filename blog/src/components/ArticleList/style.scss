@@ -1,0 +1,43 @@
+.ui-article-list {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.ui-article-item {
+    margin-bottom: 18px;
+    padding: 18px 25px 15px;
+    font-size: 16px;
+    background-color: #fff;
+    box-shadow: 0 0 5px #aaa;
+    .item-title {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 0
+    }
+    .item-info {
+        margin: 8px 0;
+        color: #999;
+        font-size: 13px;
+        span {
+            margin-right: 3px
+        }
+    }
+    .item-content {
+        color: #333;
+        font-size: 14px;
+        margin-bottom: 0
+    }
+    .item-link {
+        display: inline-block;
+        color: #3197ef;
+        font-size: 12px;
+        margin-top: 9px;
+        font-weight: 700;
+        outline: 0;
+        text-decoration: none
+    }
+}
+
+.ui-article-item:hover {
+    box-shadow: 0 0 15px #333;
+}
