@@ -1,0 +1,34 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'E:\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@4.0.2
+3 info using node@v9.3.0
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle todo@1.0.0~prestart: todo@1.0.0
+6 silly lifecycle todo@1.0.0~prestart: no script for prestart, continuing
+7 info lifecycle todo@1.0.0~start: todo@1.0.0
+8 verbose lifecycle todo@1.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle todo@1.0.0~start: PATH: C:\Users\Administrator\AppData\Roaming\npm\node_modules\npm\bin\node-gyp-bin;D:\桌面\learn\react-learn\todo\node_modules\.bin;C:\Ruby23-x64\bin;D:\adb;E:\python\;E:\python\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;E:\git\Git\cmd;C:\ProgramData\chocolatey\bin;E:\nodejs\;C:\Program Files (x86)\Yarn\bin;E:\Egret Wing 3\bin;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\Yarn\bin;E:\Microsoft VS Code\bin
+10 verbose lifecycle todo@1.0.0~start: CWD: D:\桌面\learn\react-learn\todo
+11 silly lifecycle todo@1.0.0~start: Args: [ '/d /s /c', 'webpack-dev-server' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at Object._errnoException (util.js:999:13)
+12 verbose stack     at process.kill (internal/process.js:173:18)
+12 verbose stack     at process.listener (C:\Users\Administrator\AppData\Roaming\npm\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+12 verbose stack     at process.emit (events.js:164:20)
+12 verbose stack     at processEmit (C:\Users\Administrator\AppData\Roaming\npm\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at processEmit (C:\Users\Administrator\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at Signal.wrap.onsignal (internal/process.js:198:44)
+13 verbose cwd D:\桌面\learn\react-learn\todo
+14 error Windows_NT 6.1.7601
+15 error argv "E:\\nodejs\\node.exe" "C:\\Users\\Administrator\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start"
+16 error node v9.3.0
+17 error npm  v4.0.2
+18 error code ENOSYS
+19 error errno ENOSYS
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]
