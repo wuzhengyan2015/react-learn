@@ -1,13 +1,21 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom';
-import  { Breadcrumb } from 'antd';
+import { Breadcrumb } from 'antd';
 import './style.scss'
 
-const breadcrumbNameMap = {
-    '/article': '文章',
-    '/drop': '点滴',
-    '/life': '慢生活',
-    '/archive': '归档'
+const breadcrumbNameMap = (url) => {
+    const map = {
+        '/article': '文章',
+        '/drop': '点滴',
+        '/life': '慢生活',
+        '/archive': '归档',
+        '/article/': '文章详情'
+    }
+    let text = map[url]
+    if (!text && url.indexOf('/article/') !== -1) {
+        text = map['/article/']
+    }
+    return text
 };
 
 const Crumb = withRouter((props) => {
@@ -18,7 +26,7 @@ const Crumb = withRouter((props) => {
         return (
             <Breadcrumb.Item key={url}>
                 <Link to={url}>
-                    {breadcrumbNameMap[url]}
+                    {breadcrumbNameMap(url)}
                 </Link>
             </Breadcrumb.Item>
         );
