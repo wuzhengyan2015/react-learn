@@ -1,0 +1,27 @@
+.article-detail-header {
+    h3 {
+        font-size: 26px
+    }
+}
+
+.article-detail-tags {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 18px;
+    span {
+        padding-right: 8px;
+        border-right: 1px solid #aaa;
+        margin-left: 6px;
+        &:first-child {
+            margin-left: 0
+        }
+        &:last-child {
+            border-right: 0
+        }
+    }
+}
+
+.article-detail-body {
+    font-size: 14px;
+    color: #000;
+}
