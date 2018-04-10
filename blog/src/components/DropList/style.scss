@@ -1,0 +1,22 @@
+.ui-drop-item {
+    font-size: 12px;
+    padding: 10px 17px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 4px #555;
+    .drop-item-body,
+    .drop-item-title {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    h3,
+    p,
+    .drop-item-time {
+        margin-bottom: 4px
+    }
+}
+
+.ui-drop-item:hover {
+    box-shadow: 0 0 15px #222;
+}
