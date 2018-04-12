@@ -42,7 +42,7 @@ const reducer = (state = { categories: {}, items: {} }, action) => {
                     isPending: true
                 }, 
                 items: {
-                    ...state.archive
+                    ...state.items
                 } 
             }
         case GET_CATEGORY_FULFILLED:
@@ -51,7 +51,7 @@ const reducer = (state = { categories: {}, items: {} }, action) => {
                     body: action.payload
                 }, 
                 items: {
-                    ...state.archive
+                    ...state.items
                 }
             }
         case GET_CATEGORY_REJECTED:
@@ -60,7 +60,7 @@ const reducer = (state = { categories: {}, items: {} }, action) => {
                     body: action.payload
                 }, 
                 items: {
-                    ...state.archive
+                    ...state.items
                 }
             }
         default:

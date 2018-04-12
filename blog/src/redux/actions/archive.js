@@ -11,7 +11,7 @@ export const GET_CATEGORY_REJECTED = 'GET_CATEGORY_REJECTED'
 export const getArchiveList = (category = '') => ({
     type: GET_ARCHIVE,
     payload: new Promise(resolve => {
-        fetch(`/api/archive?category_like=${pagcategorye}`).then(response => {
+        fetch(`/api/archives?category_like=${category}`).then(response => {
             resolve(response.json())
         })
     })
