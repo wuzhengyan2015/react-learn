@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Item from './Item/Item'
 import './style.scss'
+import WithLoading from '../WithLoading/WithLoading'
 
-export default class ArticleList extends Component {
+class ArticleList extends Component {
     render() {
         const className = this.props.className || ''
         return (
@@ -16,3 +17,5 @@ export default class ArticleList extends Component {
         )
     }
 }
+
+export default WithLoading(ArticleList)

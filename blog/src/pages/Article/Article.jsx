@@ -30,11 +30,7 @@ class Article extends Component {
                 <Switch>
                     <Route exact path={this.props.match.url} render={() => (
                         <div>
-                            {
-                                this.props.articles.isPending
-                                    ? <div>Loading...</div>
-                                    : <ArticleList list={list} className="margin-top-0" />
-                            }
+                            <ArticleList isLoading={this.props.articles.isPending} list={list} className="margin-top-0" />
                             <div style={{ textAlign: "center" }}>
                                 <Pagination onChange={this.pageChangeHandler} current={this.state.current} defaultCurrent={1} defaultPageSize={4} total={6} />
                             </div>

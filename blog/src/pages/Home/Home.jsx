@@ -22,13 +22,9 @@ class Home extends Component {
                         <div><img src={require('./images/4.jpg')} alt="" /></div>
                     </Carousel>
                 </div>
-                {
-                    this.props.articles.isPending 
-                    ? <div>Loading...</div> 
-                    : <div>
-                        <ArticleList list={list}/>
-                        <Link className="btn-show-all" to="/article">查看全部文章</Link>
-                    </div>
+                <ArticleList isLoading={this.props.articles.isPending} list={list}/>
+                {   
+                    list.length !== 0 && <Link className="btn-show-all" to="/article">查看全部文章</Link>
                 }
             </div>
         )
