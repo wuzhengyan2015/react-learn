@@ -5,11 +5,16 @@ module.exports = {
     entry: path.join(__dirname, './src/index.js'),
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: "index.js"
+        filename: 'index.js',
+        publicPath: '/'
     },
     devtool: 'inline-source-map', 
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        alias: {
+            components: path.join(__dirname, 'src/components'),
+            containers: path.join(__dirname, 'src/containers')
+        }
     },
     module: {
         rules: [{

@@ -1,0 +1,33 @@
+.me-header {
+    height: 64px;
+    padding: 0 75px;
+    line-height: 64px;
+    background-color: #393D49;
+}
+
+.me-logo {
+    display: inline-block;
+    width: 260px;
+    height: 40px;
+    vertical-align: middle;
+    background: url(../../assets/images/dota2-logo.png);
+}
+
+.nav-main {
+    display: inline-block;
+    height: 100%;
+    padding: 0 25px;
+    vertical-align: middle;
+}
+
+.nav-main-item {
+    display: inline-block;
+    height: 100%;
+    padding: 0 20px;
+    color: rgba(255, 255, 255, .7);
+    &:hover,
+    &.active {
+        color: #fff;
+        text-decoration: none
+    }
+}
