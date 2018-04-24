@@ -11,6 +11,10 @@ const routeMap = [
 ]
 
 class Header extends Component {
+    isActive (to, pathname) {
+        let isEqual = to === pathname
+        return isEqual || (to.length !== 1 && pathname.indexOf(to) === 0)
+    }
     render() {
         const {pathname} = this.props.location
         console.log(pathname)
@@ -20,8 +24,9 @@ class Header extends Component {
                 <nav className="nav-main">
                     {
                         routeMap.map((item, index) => {
-                            // TODO active
-                            return <Link key={index} to={item.to} className="nav-main-item">{item.text}</Link>
+                            let className = 'nav-main-item'
+                            className += this.isActive(item.to, pathname) ? ' active' : ''
+                            return <Link key={index} to={item.to} className={className}>{item.text}</Link>
                         })
                     }
                 </nav>

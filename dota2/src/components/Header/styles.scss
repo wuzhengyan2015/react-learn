@@ -17,17 +17,35 @@
     display: inline-block;
     height: 100%;
     padding: 0 25px;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .nav-main-item {
+    position: relative;
     display: inline-block;
     height: 100%;
     padding: 0 20px;
     color: rgba(255, 255, 255, .7);
+    box-sizing: border-box;
+    &:before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: #CC3333;
+        opacity: 0;
+        transition: all 0.24s ease-out;
+    }
     &:hover,
     &.active {
         color: #fff;
-        text-decoration: none
+        text-decoration: none;
+        &:before {
+            opacity: 1;
+            left: 0;
+            width: 100%;
+        }
     }
 }
