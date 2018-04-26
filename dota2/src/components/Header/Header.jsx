@@ -17,7 +17,6 @@ class Header extends Component {
     }
     render() {
         const {pathname} = this.props.location
-        console.log(pathname)
         return (
             <header className="me-header">
                 <Link to='/' className="me-logo"></Link>

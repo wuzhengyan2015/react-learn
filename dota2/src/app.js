@@ -6,11 +6,12 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import Header from 'components/Header/Header'
 import getRouter from './router/router'
 import { hot } from 'react-hot-loader'
+import './style.scss'
 
 const App = () => (
     <Provider store={store}>
         <Router>
-            <div>
+            <div className='me-page-wrapper'>
                 <Header />   
                 { getRouter() }
             </div>
