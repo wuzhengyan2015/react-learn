@@ -1,5 +1,30 @@
-.me-banner {
+.me-home-wrapper {
+  .me-banner {
     width: 100%;
     min-height: 576px;
     margin: 0 auto;
+    padding: 125px 100px 0;
+    text-align: left;
+    background: url(../../assets/images/banner.jpg) no-repeat center center;
+    background-size: cover;
+    font-family: 'Microsoft YaHei';
+    .title {
+      color: #111317;
+      font-size: 40px;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+    .legend {
+      color: #111317;
+      font-size: 20px;
+      width: 865px;
+      line-height: 1.5;
+    }
+  }
+  .me-intro {
+    width: 100%;
+    min-height: 576px;
+    padding: 0 75px;
+
+  }
 }

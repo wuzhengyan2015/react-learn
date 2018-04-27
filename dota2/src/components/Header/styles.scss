@@ -1,14 +1,14 @@
 .me-header {
-    height: 64px;
+    height: 72px;
     padding: 0 75px;
-    line-height: 64px;
-    background-color: #393D49;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2)
+    line-height: 72px;
+    background: url(../../assets/images/data2.home.nav.hover.bg.png) repeat-x;
+    background-size: auto 100%;
 }
 
 .me-logo {
     display: inline-block;
-    width: 260px;
+    width: 259px;
     height: 40px;
     vertical-align: middle;
     background: url(../../assets/images/dota2-logo.png);
@@ -35,7 +35,7 @@
         bottom: 0;
         width: 0;
         height: 3px;
-        background-color: #CC3333;
+        background-color: #f00;
         opacity: 0;
         transition: all 0.24s ease-out;
     }
