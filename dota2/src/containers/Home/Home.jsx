@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import "./style.scss";
+import HomePanel from "components/HomePanel/HomePanel";
+import { connect } from "react-redux";
+import { getBaseIntro } from "../../redux/actions/baseIntro";
 
 class Home extends Component {
+  componentDidMount() {
+    this.props.getBaseIntro();
+  }
   render() {
+    const baseIntro = this.props.baseIntro.body || [];
     return (
       <div className="me-home-wrapper">
         <section className="me-banner">
@@ -15,11 +22,26 @@ class Home extends Component {
             <br />英雄、需要新的战斗！
           </p>
         </section>
-        <section className="me-intro" />
-        <section className="me-intro" />
+        {
+          baseIntro.map((item, index) => (
+            <section className="me-intro" key={index}>
+              <HomePanel intro={item} index={index}/>
+            </section>
+          ))
+        }
       </div>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  baseIntro: state.baseIntro
+});
+
+const mapDispatchToProps = dispatch => ({
+  getBaseIntro: () => {
+    dispatch(getBaseIntro());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,11 +1,6 @@
 import { combineReducers } from 'redux'
-
-const reducer = (state = {}) => {
-    switch (state) {
-        default: return state
-    }
-}
+import baseIntro from './reducers/baseIntro'
 
 export default combineReducers({
-    reducer
+    baseIntro
 })

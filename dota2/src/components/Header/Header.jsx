@@ -4,7 +4,7 @@ import './styles.scss'
 
 const routeMap = [
     { to: '/', text: '首页' },
-    { to: '/hero', text: '英雄' },
+    { to: '/heroes', text: '英雄' },
     { to: '/items', text: '物品' },
     { to: '/map', text: '地图' },
     { to: '/version', text: '版本' }

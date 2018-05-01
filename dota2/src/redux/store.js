@@ -4,7 +4,7 @@ import logger from 'redux-logger'
 import reducers from './reducers'
 
 const store = createStore(reducers, {}, applyMiddleware(
-    promiseMiddleware,
+    promiseMiddleware(),
     logger
 ))
 
