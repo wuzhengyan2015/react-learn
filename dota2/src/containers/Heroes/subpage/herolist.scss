@@ -1,6 +1,27 @@
 .herolist-wrapper {
+  width: 100%;
   padding: 30px;
   margin-top: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 20px #d8e0e6
+  background-color: rgb(15, 15, 15);
+  box-shadow: 0 0 20px #d8e0e6;
+  .hero-item {
+    display: inline-block;
+    width: 67px;
+    height: 41px;
+    border: 4px solid #000;
+    border-radius: 3px;
+    margin-right: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    &:hover {
+      border-color: #fff;
+      border-width: 2px; 
+      border-radius: 0;
+      transform: scale(1.5)
+    }
+  }
+  .hero-item-img {
+    width: 100%;
+    height: 100%;
+  }
 }

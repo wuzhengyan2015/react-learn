@@ -3,8 +3,10 @@ import {
   GET_HEROES_FULFILLED,
   GET_HEROES_REJECTED
 } from "../actions/heroes";
+import {SET_CUR_HERO} from "../actions/heroes";
+import { combineReducers } from "redux";
 
-const reducer = (state = {}, action) => {
+const list = (state = {}, action) => {
   switch (action.type) {
     case GET_HEROES_PENDING:
       return {
@@ -17,10 +19,22 @@ const reducer = (state = {}, action) => {
     case GET_HEROES_REJECTED:
       return {
         body: action.payload
-      }
-    default: 
-      return state
+      };
+    default:
+      return state;
   }
 };
 
-export default reducer
+const cur = (state = {}, action) => {
+  switch (action.type) {
+    case SET_CUR_HERO:
+      return { ...action.data };
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({
+  list,
+  cur
+});

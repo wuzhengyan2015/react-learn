@@ -1,38 +1,58 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getHeroes } from "../../redux/actions/heroes";
-import HeroInfo from './subpage/HeroInfo'
-import HeroList from './subpage/HeroList'
-import './style.scss'
+import { getHeroes, setCurHero } from "../../redux/actions/heroes";
+import HeroInfo from "./subpage/HeroInfo";
+import HeroList from "./subpage/HeroList";
+import "./style.scss";
+import { Route, Switch } from "react-router-dom";
 
 class Hero extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       heroInfo: {}
-    }
+    };
   }
-  componentDidMount () {
-    this.props.getHeroes()
+  componentDidMount() {
+    this.props.getHeroes();
   }
   render() {
-    const herose = this.props.heroes.body || []
+    const herose = this.props.heroes.body || [];
     return (
       <div className="heroes-wrapper">
-        <HeroInfo hero={this.state.heroInfo}/>
-        <HeroList list={herose}/>
+        <Switch>
+          <Route
+            exact
+            path={this.props.match.path}
+            render={() => (
+              <div>
+                <HeroInfo hero={this.state.heroInfo} hero={this.props.cur} />
+                <HeroList list={herose} hoverHandler={this.props.setCurHero} />
+              </div>
+            )}
+          />
+          <Route path={`${this.props.match.path}/:heroname`} render={() => (
+              <div>
+                hahah
+              </div>
+            )}/>
+        </Switch>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  heroes: state.heroes
+  heroes: state.heroes.list,
+  cur: state.heroes.cur
 });
 
 const mapDispatchToProps = dispatch => ({
   getHeroes: () => {
     dispatch(getHeroes());
+  },
+  setCurHero: hero => {
+    dispatch(setCurHero(hero));
   }
 });
 
