@@ -13,8 +13,9 @@ class HeroList extends Component {
         {
           Object.keys(list).map((item, index) => {
             const mouseEnterHandler = this.mouseEnterHandler.bind(this, list[item])
+            const itemClass = 'hero-item' + (list[item].isDisabled ? ' disabled' : '')
             return (
-              <Link to={`/heroes/${item}`} className="hero-item" key={index} onMouseEnter={mouseEnterHandler}>
+              <Link to={`/heroes/${item}`} className={itemClass} key={index} onMouseEnter={mouseEnterHandler}>
                 <img className="hero-item-img" src={`/assets/images/heroes/${item}_hphover.png`} alt={item}/>
               </Link>
             )
