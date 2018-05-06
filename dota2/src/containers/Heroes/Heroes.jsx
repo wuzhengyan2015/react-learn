@@ -4,6 +4,7 @@ import { getHeroes, setCurHero } from "../../redux/actions/heroes";
 import HeroInfo from "./subpage/HeroInfo";
 import HeroList from "./subpage/HeroList";
 import HeroFilter from "./subpage/HeroFilter";
+import HeroDetail from './subpage/HeroDetail'
 import "./style.scss";
 import { Route, Switch } from "react-router-dom";
 
@@ -77,7 +78,7 @@ class Hero extends Component {
           />
           <Route
             path={`${this.props.match.path}/:heroname`}
-            render={() => <div>hahah</div>}
+            render={() => <HeroDetail list={heroes}/>}
           />
         </Switch>
       </div>

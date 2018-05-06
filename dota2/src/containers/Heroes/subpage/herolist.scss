@@ -18,9 +18,11 @@
       border-color: #fff;
       border-width: 2px; 
       border-radius: 0;
-      transform: scale(1.5)
+      transform: scale(1.5);
+      z-index: 15;
     }
     &.disabled {
+      cursor: default;
       &:after {
         content: '';
         position: absolute;
