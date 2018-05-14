@@ -2496,7 +2496,6 @@
       "<div class=\"items_p\">被动：毒性攻击 - 使目标中毒，造成持续伤害和减速，效果取决于你的英雄是近战还是远程。<br /><br />淬毒之珠是攻击特效，不与其他攻击特效叠加。</div>",
       "<div class=\"items_p3\">近战减速：<strong>12%</strong></div><div class=\"items_p3\">远程减速：<strong>4%</strong></div><div class=\"items_p3\">持续时间：<strong>4</strong></div><div class=\"items_p3\">毒素伤害：<strong>3</strong></div>",
       "<div class=\"items_p4\">给你的武器淬上剧毒蜘蛛的毒液。</div>"
-    ],
-    "jz": ["卷轴", "/assets/images/items/recipe_lg.png"]
+    ]
   }
 }
