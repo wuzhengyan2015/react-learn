@@ -1,5 +1,5 @@
 .item-list-wrapper {
-  padding: 20px 40px 40px;
+  padding: 140px 40px 180px;
   .item-display {
     display: inline-block;
     width: 70px;
@@ -64,6 +64,90 @@
         border: 16px solid transparent;
         border-left: 28px solid #000;
         border-right-width: 0;
+      }
+    }
+    .imgIcon {
+      float: left;
+    }
+    .itemName {
+      margin: 3px 0px 3px 82px;
+      color: #ffffff;
+    }
+    .itemGold {
+      margin: 3px 0px 3px 82px;
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        vertical-align: middle
+      }
+    }
+    .icon-gold {
+      display: inline-block;
+      width: 25px;
+      height: 17px;
+      background: url(../../../assets/images/gold.png);
+      background-size: 100% 100%;
+      vertical-align: middle
+    }
+    .cost-gold {
+      display: inline-block;
+      margin-left: 6px;
+      color: #f5c433;
+      font-size: 15px;
+      font-weight: bold;
+      vertical-align: middle
+    }
+    .itemDesc {
+      font-size: 14px;
+      color:#c0c0c0;
+      .items_p2 {
+        color: #afafaf;
+      }
+      .items_p2:before {
+        content: '+';
+      }
+      .items_p5 {
+        .ico2, .ico1 {
+          position: relative;
+          display: inline-block;
+          margin-right: 30px;
+          padding-left: 26px;
+          vertical-align: middle;
+          &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 0;
+            height: 100%;
+            vertical-align: middle
+          }
+        }
+        .ico2::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 18px;
+          height: 18px;
+          margin-right: 8px;
+          margin-top: -9px;
+          vertical-align: middle;
+          background: url(../../../assets/images/cooldown.png)
+        }
+        .ico1::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 18px;
+          height: 18px;
+          margin-right: 8px;
+          margin-top: -9px;
+          vertical-align: middle;
+          background: url(../../../assets/images/mana.png)
+        }
       }
     }
   }
