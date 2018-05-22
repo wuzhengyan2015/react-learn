@@ -6,15 +6,27 @@ import ItemInfo from './subpage/ItemInfo'
 import ItemList from './subpage/ItemList'
 
 class Items extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      selectedItem: null
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
   componentDidMount () {
     this.props.getItems()
+  }
+  handleClick (item) {
+    this.setState({
+      selectedItem: item
+    })
   }
   render() {
     const items = this.props.items.body || {}
     return (
       <div className="items_wrapper">
-        <ItemInfo />
-        <ItemList items={items}/>
+        <ItemInfo selectedItem={this.state.selectedItem}/>
+        <ItemList items={items} itemClick={this.handleClick}/>
       </div>
     )
   }

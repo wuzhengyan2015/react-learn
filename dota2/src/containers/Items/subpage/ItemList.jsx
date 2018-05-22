@@ -49,6 +49,7 @@ class ItemList extends Component {
               key={index}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={this.handleMouseOut}
+              onClick={() => this.props.itemClick(items[name])}
             >
               <img src={items[name][2]} alt={name} />
             </div>
