@@ -1,0 +1,20 @@
+.ui-slider {
+  width: 600px;
+  height: 338px;
+  margin: 0 auto;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  overflow: hidden;
+}
+.ui-slider-list {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  white-space: nowrap;
+  transform: translate3d(0, 0, 0);
+}
+.ui-slider-arrow {
+  position: absolute;
+}

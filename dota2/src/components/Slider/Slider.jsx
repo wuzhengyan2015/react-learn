@@ -6,7 +6,7 @@ class Slider extends Component {
   render () {
     return (
       <div className="ui-slider">
-        <a href="javascript:void(0);">&lt;</a>
+        <a className="ui-slider-arrow" href="javascript:void(0);">&lt;</a>
         <ul className="ui-slider-list">
           {
             this.props.items.map((item, index) => (
@@ -18,7 +18,7 @@ class Slider extends Component {
         <ul className="ui-slider-dots">
 
         </ul>
-        <a href="javascript:void(0);">&gt;</a>
+        <a className="ui-slider-arrow" href="javascript:void(0);">&gt;</a>
       </div>
     )
   }
