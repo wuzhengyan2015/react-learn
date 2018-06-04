@@ -1,4 +1,5 @@
 .ui-slider {
+  position: relative;
   width: 600px;
   height: 338px;
   margin: 0 auto;
@@ -7,6 +8,11 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   background-color: #fff;
   overflow: hidden;
+  &:hover {
+    .ui-slider-arrow {
+      opacity: 1
+    }
+  }
 }
 .ui-slider-list {
   position: relative;
@@ -15,6 +21,31 @@
   white-space: nowrap;
   transform: translate3d(0, 0, 0);
 }
+.ui-slider-list.transition {
+  transition: transform 1s;
+}
 .ui-slider-arrow {
   position: absolute;
+  width: 30px;
+  color: #fff;
+  font-size: 28px;
+  z-index: 10;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  &.left-arrow {
+    top: 50%;
+    left: 25px;
+    transform: translate(0, -50%)
+  }
+  &.right-arrow {
+    top: 50%;
+    right: 25px;
+    transform: translate(0, -50%)
+  }
 }
