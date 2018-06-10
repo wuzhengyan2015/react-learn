@@ -57,7 +57,7 @@ class Slider extends Component {
   }
   goNext () {
     if (this.state.cur === this.total - 1) return
-    let cur = this.state.cur + 1
+    let cur = this.state.cur % this.total + 1
     this.setState({
       cur: cur
     })
