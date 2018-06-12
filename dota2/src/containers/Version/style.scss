@@ -1,0 +1,57 @@
+.versions_wrapper {
+    width: 100%;
+    padding: 30px 100px 50px;
+}
+
+.version-list {
+    list-style: none;
+    color: #000;
+    padding: 20px 100px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #d8e0e6;
+    background-color: #fff;
+    text-align: left;
+}
+
+.version-item {
+    position: relative;
+    padding-bottom: 15px;
+    font-size: 16px;
+    color: #4d4d4d;
+    &:before {
+        content: '';
+        position: relative;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 10px;
+        background-color: #fff;
+        border: 2px solid #f5222d;
+        border-radius: 50%;
+        vertical-align: baseline;
+        z-index: 10;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        left: 4px;
+        top: 12px;
+        width: 2px;
+        height: 100%;
+        background-color: #e8e8e8;
+        z-index: 1;
+    }
+    &:nth-child(even) {
+        &:before {
+            border-color: #1890ff
+        }
+    }
+    &:last-child {
+        &:after {
+            display: none
+        }
+    }
+    .version-item-time {
+        margin-right: 20px;
+    }
+}

@@ -21,6 +21,9 @@ class Slider extends Component {
       this.startAnime()
     }
   }
+  componentWillUnmount () {
+    clearInterval(this.t)
+  }
   setTranslate (x) {
     this._list.style.transform = `translate3d(-${100 * x}%, 0, 0)`
   }
