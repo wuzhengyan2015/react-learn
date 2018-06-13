@@ -2,16 +2,18 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getVersions} from '../../redux/actions/versions'
 import './style.scss'
+import SkeletonScreen from '../../components/SkeletonScreen/SkeletonScreen'
 
 class Version extends Component {
     componentDidMount () {
         this.props.getVersions()
     }
     render () {
-        const {body:versions = []} = this.props.versions
+        const {body:versions = [], isPending} = this.props.versions
         return (
             <div className="versions_wrapper">
-                <ul className="version-list">
+                {isPending && <SkeletonScreen/>}
+                {versions.length !== 0 && <ul className="version-list">
                     { 
                         versions.map((item, index) => {
                             return (
@@ -23,6 +25,7 @@ class Version extends Component {
                         })
                     }
                 </ul>
+                }
             </div>
         )
     }
