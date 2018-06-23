@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 
 class HeroDetail extends Component {
   render() {
+    console.log('render heroDeatil')
     const heroname = this.props.match.params.heroname;
     const info = this.props.list[heroname] || {};
     return (
@@ -24,34 +25,34 @@ class HeroDetail extends Component {
           <hr />
           <div className="hero-detail-talent-tree">
             <h4>天赋树</h4>
-            <ul class="talent_ul">
+            <ul className="talent_ul">
               <li className="border">
-                <div class="talent-explain">50% 冷却时间减少</div>
-                <div class="level-external">
-                  <div class="level-interior">25</div>
+                <div className="talent-explain">50% 冷却时间减少</div>
+                <div className="level-external">
+                  <div className="level-interior">25</div>
                 </div>
-                <div class="talent-explain">+20% 精准光环攻击力</div>
+                <div className="talent-explain">+20% 精准光环攻击力</div>
               </li>
               <li className="border">
-                <div class="talent-explain">+3秒 狂风持续时间</div>
-                <div class="level-external">
-                  <div class="level-interior">20</div>
+                <div className="talent-explain">+3秒 狂风持续时间</div>
+                <div className="level-external">
+                  <div className="level-interior">20</div>
                 </div>
-                <div class="talent-explain">+20 射手天赋敏捷</div>
+                <div className="talent-explain">+20 射手天赋敏捷</div>
               </li>
               <li className="border">
-                <div class="talent-explain">+550 狂风距离/击退</div>
-                <div class="level-external">
-                  <div class="level-interior">15</div>
+                <div className="talent-explain">+550 狂风距离/击退</div>
+                <div className="level-external">
+                  <div className="level-interior">15</div>
                 </div>
-                <div class="talent-explain">+25 攻击速度</div>
+                <div className="talent-explain">+25 攻击速度</div>
               </li>
               <li className="border">
-                <div class="talent-explain">+5 全属性</div>
-                <div class="level-external">
-                  <div class="level-interior">10</div>
+                <div className="talent-explain">+5 全属性</div>
+                <div className="level-external">
+                  <div className="level-interior">10</div>
                 </div>
-                <div class="talent-explain">+20 移动速度</div>
+                <div className="talent-explain">+20 移动速度</div>
               </li>
             </ul>
           </div>

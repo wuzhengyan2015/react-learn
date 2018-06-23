@@ -3,6 +3,9 @@ import './herolist.scss'
 import {Link} from 'react-router-dom'
 
 class HeroList extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.list !== this.props.list
+  }
   mouseEnterHandler (hero) {
     this.props.hoverHandler(hero)
   }

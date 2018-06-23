@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import './heroinfo.scss'
 
 class HeroInfo extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.hero.name !== nextProps.hero.name
+  }
   render () {
     let {name = "请选择英雄", atk_l, roles_l} = this.props.hero
     let tags = roles_l ? [atk_l].concat(roles_l) : []

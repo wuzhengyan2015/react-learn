@@ -15,9 +15,17 @@ class Hero extends Component {
     this.state = {
       filter: {}
     };
+    this.filteredHeroes = {}
   }
   componentDidMount() {
     this.props.getHeroes();
+  }
+  componentWillReceiveProps(nextProps){
+    // or filter放到redux，heroes和filter变化了filteredHeroes才换
+    if (nextProps.heroes.body && nextProps.heroes !== this.props.heroes) {
+      const heroes = nextProps.heroes.body || {}
+      this.filteredHeroes = this.filterHeroes(heroes, this.state.filter)
+    }
   }
   getFilterList(heroes, key) {
     const temp = [];
@@ -37,9 +45,11 @@ class Hero extends Component {
     this.setState({
       filter: { key, value }
     });
+    this.filteredHeroes = this.filterHeroes(this.filteredHeroes,  { key, value })
   }
   filterHeroes(heroes, filter) {
     if (filter.key === "") return heroes;
+    heroes = {...heroes}
     for (let item of Object.values(heroes)) {
       item.isDisabled = false
       let value = item[filter.key];
@@ -52,8 +62,7 @@ class Hero extends Component {
     return heroes;
   }
   render() {
-    let heroes = this.props.heroes.body || {};
-    heroes = this.filterHeroes(heroes, this.state.filter);
+    const heroes = this.filteredHeroes
     const locationList = this.getFilterList(heroes, "roles_l");
     const typeList = this.getFilterList(heroes, "atk_l");
     const nameList = this.getFilterList(heroes, "name");
