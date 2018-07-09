@@ -3,10 +3,12 @@
     "browser": true,
     "es6": true
   },
+  "parser": "babel-eslint",
   "extends": "airbnb",
   "rules": {
       "semi": 0,
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-      "import/extensions": 0
+      "import/extensions": 0,
+      "comma-dangle": 0
   }
 }
