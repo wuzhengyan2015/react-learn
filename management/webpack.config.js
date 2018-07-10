@@ -12,6 +12,9 @@ module.exports = {
   devtool: 'inline-source-map',
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      containers: path.resolve(__dirname, 'src/containers')
+    }
   },
   module: {
     rules: [
