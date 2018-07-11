@@ -2,10 +2,8 @@ import React from 'react'
 import { Layout } from 'antd'
 import PrimarySideBar from 'containers/PrimarySideBar/PrimarySideBar'
 import PrimaryHeader from 'containers/PrimaryHeader/PrimaryHeader'
+import PrimaryContent from 'containers/PrimaryContent/PrimaryContent'
 import PrimaryFooter from 'containers/PrimaryFooter/PrimaryFooter'
-import './style.scss'
-
-const { Content } = Layout
 
 function PrimaryLayout() {
   return (
@@ -13,9 +11,7 @@ function PrimaryLayout() {
       <PrimarySideBar />
       <Layout>
         <PrimaryHeader />
-        <Content className="ui-main-content">
-            Content
-        </Content>
+        <PrimaryContent />
         <PrimaryFooter />
       </Layout>
     </Layout>
