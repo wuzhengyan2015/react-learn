@@ -10,6 +10,8 @@
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "import/extensions": 0,
       "comma-dangle": 0,
-      "import/no-unresolved": 0
+      "import/no-unresolved": 0,
+      "import/prefer-default-export": 0,
+      "no-shadow": 0
   }
 }

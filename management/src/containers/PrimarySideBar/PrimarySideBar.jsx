@@ -1,22 +1,34 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Layout, Menu, Icon } from 'antd'
+import { connect } from 'react-redux'
+import './style.scss'
 
 const { Sider } = Layout
 
+@connect(
+  state => ({ collapsed: state.sidebar.collapsed })
+)
 class PrimarySideBar extends Component {
-  state = {
+  static propTypes = {
+    collapsed: PropTypes.bool
+  }
+
+  static defaultProps = {
     collapsed: false
   }
 
   render() {
-    const { collapsed } = this.state
+    const { collapsed } = this.props
     return (
       <Sider
         trigger={null}
         collapsible
         collapsed={collapsed}
       >
-        <div className="logo" />
+        <a href="/" className="logo">
+          <i />
+        </a>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1">
             <Icon type="user" />

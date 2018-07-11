@@ -1,29 +1,35 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Layout, Icon } from 'antd'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { collapseSidebar } from 'actions/sidebar'
 
-/* eslint-disable */
 const { Header } = Layout
 
-/* eslint-disable */
+@connect(
+  state => ({ collapsed: state.sidebar.collapsed }),
+  dispatch => bindActionCreators({ collapseSidebar }, dispatch)
+)
 class PrimaryHeader extends Component {
-  state = {
-    collapsed: false,
+  static propTypes = {
+    collapsed: PropTypes.bool,
+    collapseSidebar: PropTypes.func
   }
 
-  toggle = () => {
-    const { collapsed } = this.state
-    this.setState({
-      collapsed: !collapsed,
-    });
+  static defaultProps = {
+    collapsed: false,
+    collapseSidebar: () => {}
   }
-  render () {
-    const { collapsed } = this.state
+
+  render() {
+    const { collapsed, collapseSidebar } = this.props
     return (
       <Header className="ui-main-header">
         <Icon
           className="trigger"
-            type={collapsed ? 'menu-unfold' : 'menu-fold'}
-            onClick={this.toggle}
+          type={collapsed ? 'menu-unfold' : 'menu-fold'}
+          onClick={collapseSidebar}
         />
       </Header>
     )

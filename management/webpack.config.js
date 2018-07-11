@@ -1,6 +1,6 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -13,7 +13,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      containers: path.resolve(__dirname, 'src/containers')
+      containers: path.resolve(__dirname, 'src/containers'),
+      components: path.resolve(__dirname, 'src/components'),
+      actions: path.resolve(__dirname, 'src/redux/actions')
     }
   },
   module: {
@@ -31,6 +33,18 @@ module.exports = {
         test: /\.(scss)$/,
         include: path.resolve(__dirname, 'src'),
         use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(less)$/,
+        use: ['style-loader', 'css-loader', {
+          loader: 'less-loader',
+          options: {
+            javascriptEnabled: true,
+            modifyVars: {
+              'font-size-base': '16px'
+            }
+          }
+        }],
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -57,4 +71,4 @@ module.exports = {
     port: 8080,
     hot: true,
   },
-};
+}
