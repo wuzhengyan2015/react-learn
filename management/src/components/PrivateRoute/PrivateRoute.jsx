@@ -18,4 +18,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 )
 
+/* HOC
+const requireAuth = (Component) => {
+  const isLogin = true
+  return (props) => {
+    if (!isLogin) {
+      props.history.push('/login')
+    }
+    return <Component {...props} />
+  }
+} */
+
 export default PrivateRoute
