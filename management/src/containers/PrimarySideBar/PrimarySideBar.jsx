@@ -45,7 +45,7 @@ class PrimarySideBar extends Component {
     return (
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <a href="/" className="logo"><i /></a>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={linkConfig[0].key}>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={[linkConfig[0].key]}>
           {
             linkConfig.map(item => (
               <Menu.Item key={item.key}>
