@@ -38,6 +38,9 @@ const context = {
     const encryptUesr = encryptByDESModeCBC(JSON.stringify(user))
     localStorage.setItem('user', encryptUesr)
   },
+  resetUserInfo() {
+    localStorage.removeItem('user')
+  },
   isLogin() {
     return !!this.getUserInfo()
   }

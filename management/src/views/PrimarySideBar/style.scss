@@ -19,6 +19,8 @@
     }
   }
 }
-.ant-menu-item > a.ui-sidebar-link {
-  display: inline-block
+.ant-menu-item a.ui-sidebar-link {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
 }

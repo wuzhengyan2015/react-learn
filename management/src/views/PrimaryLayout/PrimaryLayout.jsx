@@ -1,9 +1,9 @@
 import React from 'react'
 import { Layout } from 'antd'
-import PrimarySideBar from 'containers/PrimarySideBar/PrimarySideBar'
-import PrimaryHeader from 'containers/PrimaryHeader/PrimaryHeader'
-import PrimaryContent from 'containers/PrimaryContent/PrimaryContent'
-import PrimaryFooter from 'containers/PrimaryFooter/PrimaryFooter'
+import PrimarySideBar from '../PrimarySideBar/PrimarySideBar'
+import PrimaryHeader from '../PrimaryHeader/PrimaryHeader'
+import PrimaryContent from '../PrimaryContent/PrimaryContent'
+import PrimaryFooter from '../PrimaryFooter/PrimaryFooter'
 
 function PrimaryLayout() {
   return (

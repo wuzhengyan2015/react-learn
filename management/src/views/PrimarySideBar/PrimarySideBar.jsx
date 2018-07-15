@@ -50,7 +50,7 @@ class PrimarySideBar extends Component {
             linkConfig.map(item => (
               <Menu.Item key={item.key}>
                 <Icon type={item.icon} />
-                <Link className="ui-sidebar-link" to={item.to}>{item.text}</Link>
+                <span><Link className="ui-sidebar-link" to={item.to}>{item.text}</Link></span>
               </Menu.Item>
             ))
           }

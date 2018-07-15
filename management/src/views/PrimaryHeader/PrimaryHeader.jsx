@@ -4,6 +4,8 @@ import { Layout, Icon } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { collapseSidebar } from 'actions/sidebar'
+import context from '../../config/context'
+import './style.scss'
 
 const { Header } = Layout
 
@@ -17,9 +19,8 @@ class PrimaryHeader extends Component {
     collapseSidebar: PropTypes.func
   }
 
-  static defaultProps = {
-    collapsed: false,
-    collapseSidebar: () => {}
+  handleLoginOut = () => {
+    context.resetUserInfo()
   }
 
   render() {
@@ -27,10 +28,11 @@ class PrimaryHeader extends Component {
     return (
       <Header className="ui-main-header">
         <Icon
-          className="trigger"
+          className="sidebar-trigger"
           type={collapsed ? 'menu-unfold' : 'menu-fold'}
           onClick={collapseSidebar}
         />
+        <a href="/login" onClick={this.handleLoginOut}>退出</a>
       </Header>
     )
   }
