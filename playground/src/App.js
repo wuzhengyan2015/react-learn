@@ -18,7 +18,8 @@ class App extends Component {
 function getDisplayName(component) {
   return component.displayName || component.name || 'Component';
 }
-function withHeader(WrappedComponent) {
+function withHeader
+(WrappedComponent) {
   return class HOC extends Component {
     static displayName = `HOC(${getDisplayName(WrappedComponent)})`
     render() {

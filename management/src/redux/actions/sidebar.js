@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions'
-import { COLLAPSE_SIDEBAR } from '../actionTypes/sidebar'
+
+export const COLLAPSE_SIDEBAR = 'COLLAPSE_SIDEBAR'
 
 export const collapseSidebar = createAction(COLLAPSE_SIDEBAR)
