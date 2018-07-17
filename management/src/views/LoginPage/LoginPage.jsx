@@ -1,31 +1,43 @@
 import React, { Component } from 'react'
 import LoginForm from 'containers/LoginForm/LoginForm'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import { message } from 'antd'
 import context from '../../config/context'
+import { login } from '../../redux/actions/login'
 
-/* eslint-disable */
+@connect(
+  state => state.loginInfo,
+  dispatch => bindActionCreators({ login }, dispatch)
+)
 class LoginPage extends Component {
-  componentDidMount () {
-    const isLogin = context.isLogin()
-    const {history} = this.props
-    isLogin && history.push('/')
-  }
-  handleLoginRequest = (formValues) => {
-    const {userName, password} = formValues
-    if (userName === 'admin' && password === 'admin') {
-      this.handleLoginSuccess(formValues)
-    } else {
-      message.error('账号或者密码错误')
+  componentDidMount() {
+    const { isLogin, history } = this.props
+    console.log(isLogin)
+    if (isLogin) {
+      history.push('/')
     }
   }
+
+  handleLoginRequest = (formValues) => {
+    const { username, password } = formValues
+    const { login } = this.props
+    login({ username, password }).then(() => {
+      this.handleLoginSuccess(formValues)
+    }).catch(() => {
+      message.error('账号或者密码错误')
+    })
+  }
+
   handleLoginSuccess = (formValues) => {
     const { history } = this.props
     context.setUserInfo(formValues)
     history.push('/')
   }
-  render () {
+
+  render() {
     return (
-      <LoginForm onLoginRequest={this.handleLoginRequest}/>
+      <LoginForm onLoginRequest={this.handleLoginRequest} />
     )
   }
 }

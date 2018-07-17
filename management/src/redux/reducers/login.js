@@ -4,7 +4,7 @@ import { LOGIN, LOGOUT } from '../actions/login'
 const reducer = handleActions({
   [LOGIN]: {
     next(state, action) {
-      return { ...state, isLogin: true, username: action.payload }
+      return { ...state, isLogin: true, ...action.payload }
     },
     throw() {
       return { isLogin: false }
