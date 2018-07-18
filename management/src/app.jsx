@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import PrimaryLayout from 'views/PrimaryLayout/PrimaryLayout'
 import LoginPage from 'views/LoginPage/LoginPage'
+import PrivateRoute from 'components/PrivateRoute/PrivateRoute'
 import store from './redux/index'
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/login" component={LoginPage} />
-          <Route path="/" component={PrimaryLayout} />
+          <PrivateRoute path="/" component={PrimaryLayout} />
         </Switch>
       </Router>
     </Provider>
