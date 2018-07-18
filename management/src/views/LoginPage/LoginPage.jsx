@@ -31,7 +31,10 @@ class LoginPage extends Component {
 
   handleLoginSuccess = (formValues) => {
     const { history } = this.props
-    context.setUserInfo(formValues)
+    console.log(formValues.remember)
+    if (formValues.remember) {
+      context.setUserInfo(formValues)
+    }
     history.push('/')
   }
 

@@ -1,11 +1,10 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import context from '../../config/context'
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, isLogin, ...rest }) => (
   <Route
     {...rest}
-    render={props => (context.isLogin() ? (
+    render={props => (true ? (
       <Component {...props} />
     ) : (
       <Redirect
