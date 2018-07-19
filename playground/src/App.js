@@ -4,6 +4,7 @@ import './App.css';
 import ReduxActionsDemo from './redux-actions/index'
 import ReduxSagasDemo from './redux-sagas/index.jsx'
 import ReduxPromiseDemo from './redux-promise/index'
+import axios from 'axios'
 
 class App extends Component {
   render() {
@@ -14,6 +15,10 @@ class App extends Component {
     )
   }
 }
+
+// axios.get('http://localhost:3004/posts').then((data) => {
+//   console.log(data)
+// })
 
 function getDisplayName(component) {
   return component.displayName || component.name || 'Component';
