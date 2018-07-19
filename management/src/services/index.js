@@ -7,7 +7,7 @@ const api = {
         } else {
           reject(new Error('用户名或密码错误'))
         }
-      }, 500)
+      }, 2500)
     })
   },
   logout() {
