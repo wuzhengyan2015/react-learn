@@ -7,14 +7,14 @@ const api = {
         } else {
           reject(new Error('用户名或密码错误'))
         }
-      }, 2500)
+      }, 500)
     })
   },
   logout() {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(true)
-      }, 500)
+      }, 100)
     })
   }
 }

@@ -3,3 +3,34 @@
   color: white;
   cursor: pointer;
 }
+.header-uesrinfo {
+  float: right;
+  height: 36px;
+  color: #fff;
+  cursor: pointer;
+  .header-popover {
+    padding: 4px;
+  }
+  .avatar {
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  .nickname {
+    vertical-align: middle
+  }
+}
+.header-user-menu {
+  .menu-item {
+    padding: 4px;
+    cursor: pointer;
+    &:hover {
+      .menu-btn, .anticon {
+        color: #1890ff
+      }
+    }
+  }
+  .menu-btn {
+    margin-left: 5px;
+    text-decoration: none;
+  }
+}
