@@ -5,12 +5,16 @@ import ReduxActionsDemo from './redux-actions/index'
 import ReduxSagasDemo from './redux-sagas/index.jsx'
 import ReduxPromiseDemo from './redux-promise/index'
 import axios from 'axios'
+import BaseContext from './context/BaseContext'
+import Modal from './portals/Portals'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <EnhanceDemo />
+        <Modal>
+          {[1, 2, 3, 4]}
+        </Modal>
       </div>
     )
   }
