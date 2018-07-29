@@ -43,20 +43,14 @@ class Entry extends Component {
   render() {
     const { renderRoute } = this.state
     const { isLogin } = this.props
-    return (
-      <React.Fragment>
-        {
-          (renderRoute)
-            ? (
-              <Switch>
-                <Route path="/login" component={LoginPage} />
-                <PrivateRoute path="/" isLogin={isLogin} component={PrimaryLayout} />
-              </Switch>
-            )
-            : null
-        }
-      </React.Fragment>
-    )
+    return (renderRoute
+      ? (
+        <Switch>
+          <Route path="/login" component={LoginPage} />
+          <PrivateRoute path="/" isLogin={isLogin} component={PrimaryLayout} />
+        </Switch>
+      )
+      : null)
   }
 }
 

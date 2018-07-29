@@ -3,6 +3,15 @@
   "plugins": [
     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true}],
     "react-hot-loader/babel",
-    "transform-decorators-legacy"
+    "transform-decorators-legacy",
+    [
+      "transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
+    ]
   ]
 }

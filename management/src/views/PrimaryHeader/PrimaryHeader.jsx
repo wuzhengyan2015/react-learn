@@ -8,6 +8,7 @@ import { collapseSidebar } from 'actions/sidebar'
 import context from '../../config/context'
 import { logout } from '../../redux/actions/login.js'
 import userDefault from '../../assets/images/user-default.png'
+import api from '../../services/index'
 import './style.scss'
 
 const { Header } = Layout
@@ -21,6 +22,18 @@ class PrimaryHeader extends Component {
   static propTypes = {
     collapsed: PropTypes.bool,
     collapseSidebar: PropTypes.func
+  }
+
+  state = {
+    live: undefined
+  }
+
+  componentDidMount = () => {
+    api.getWeather('福州').then((weather) => {
+      this.setState({
+        live: weather.data.lives[0]
+      })
+    })
   }
 
   handleLoginOut = () => {
@@ -43,6 +56,7 @@ class PrimaryHeader extends Component {
   )
 
   render() {
+    const { live = {} } = this.state
     const { collapsed, collapseSidebar, userInfo } = this.props
     const { avatar = userDefault, nickname } = userInfo
     const userMenu = this.createUserMenu()
@@ -53,6 +67,11 @@ class PrimaryHeader extends Component {
           type={collapsed ? 'menu-unfold' : 'menu-fold'}
           onClick={collapseSidebar}
         />
+        <span className="weather-info">
+          <span>{live.city}</span>
+          <span>{live.temperature}</span>
+          <span>{live.weather}</span>
+        </span>
         <div className="header-uesrinfo">
           <Popover placement="bottomRight" content={userMenu} trigger="click">
             <img className="avatar" src={avatar} alt="" />
