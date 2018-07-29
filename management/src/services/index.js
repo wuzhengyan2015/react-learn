@@ -14,7 +14,7 @@ const api = {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(true)
-      }, 500)
+      }, 100)
     })
   }
 }

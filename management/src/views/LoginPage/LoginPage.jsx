@@ -13,7 +13,6 @@ import { login } from '../../redux/actions/login'
 class LoginPage extends Component {
   componentDidMount() {
     const { isLogin, history } = this.props
-    console.log(isLogin)
     if (isLogin) {
       history.push('/')
     }
@@ -24,14 +23,13 @@ class LoginPage extends Component {
     const { login } = this.props
     login({ username, password }).then(() => {
       this.handleLoginSuccess(formValues)
-    }).catch(() => {
-      message.error('账号或者密码错误')
+    }).catch((e) => {
+      message.error(e.message)
     })
   }
 
   handleLoginSuccess = (formValues) => {
     const { history } = this.props
-    console.log(formValues.remember)
     if (formValues.remember) {
       context.setUserInfo(formValues)
     }

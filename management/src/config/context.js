@@ -40,9 +40,6 @@ const context = {
   },
   resetUserInfo() {
     localStorage.removeItem('user')
-  },
-  isLogin() {
-    return !!this.getUserInfo()
   }
 }
 
