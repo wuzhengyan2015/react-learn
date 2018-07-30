@@ -7,7 +7,7 @@ import PrimaryFooter from '../PrimaryFooter/PrimaryFooter'
 
 function PrimaryLayout() {
   return (
-    <Layout>
+    <Layout style={{ height: '100%' }}>
       <PrimarySideBar />
       <Layout>
         <PrimaryHeader />

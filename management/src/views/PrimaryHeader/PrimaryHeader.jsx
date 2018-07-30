@@ -33,6 +33,8 @@ class PrimaryHeader extends Component {
       this.setState({
         live: weather.data.lives[0]
       })
+    }).catch(() => {
+      console.log('can\'t get weather')
     })
   }
 
@@ -67,11 +69,11 @@ class PrimaryHeader extends Component {
           type={collapsed ? 'menu-unfold' : 'menu-fold'}
           onClick={collapseSidebar}
         />
-        <span className="weather-info">
+        <div className="header-weather-info">
           <span>{live.city}</span>
-          <span>{live.temperature}</span>
+          <span>{live.temperature && `${live.temperature}℃`}</span>
           <span>{live.weather}</span>
-        </span>
+        </div>
         <div className="header-uesrinfo">
           <Popover placement="bottomRight" content={userMenu} trigger="click">
             <img className="avatar" src={avatar} alt="" />
