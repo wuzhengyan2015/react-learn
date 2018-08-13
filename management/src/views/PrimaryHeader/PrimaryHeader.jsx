@@ -20,8 +20,8 @@ const { Header } = Layout
 )
 class PrimaryHeader extends Component {
   static propTypes = {
-    collapsed: PropTypes.bool,
-    collapseSidebar: PropTypes.func
+    collapsed: PropTypes.bool.isRequired,
+    collapseSidebar: PropTypes.func.isRequired,
   }
 
   state = {

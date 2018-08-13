@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Layout, Menu, Icon } from 'antd'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import './style.scss'
 
 const { Sider } = Layout
@@ -33,11 +33,12 @@ const linkConfig = [{
 )
 class PrimarySideBar extends Component {
   static propTypes = {
-    collapsed: PropTypes.bool
+    collapsed: PropTypes.bool.isRequired
   }
 
-  static defaultProps = {
-    collapsed: false
+  handleMenuClick = (to) => {
+    const { history } = this.props
+    history.push(to)
   }
 
   render() {
@@ -48,9 +49,9 @@ class PrimarySideBar extends Component {
         <Menu theme="dark" mode="inline" defaultSelectedKeys={[linkConfig[0].key]}>
           {
             linkConfig.map(item => (
-              <Menu.Item key={item.key}>
+              <Menu.Item key={item.key} onClick={() => this.handleMenuClick(item.to)}>
                 <Icon type={item.icon} />
-                <span><Link className="ui-sidebar-link" to={item.to}>{item.text}</Link></span>
+                <span>{item.text}</span>
               </Menu.Item>
             ))
           }
@@ -60,4 +61,4 @@ class PrimarySideBar extends Component {
   }
 }
 
-export default PrimarySideBar
+export default withRouter(PrimarySideBar)
