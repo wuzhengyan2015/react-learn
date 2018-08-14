@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Layout, Menu, Icon } from 'antd'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { injectIntl } from 'react-intl';
 import './style.scss'
 
 const { Sider } = Layout
@@ -10,27 +11,28 @@ const linkConfig = [{
   key: 'dashBoard',
   to: '/',
   icon: 'dashboard',
-  text: '仪表盘'
+  text: 'nav.dashboard'
 }, {
   key: 'leagues',
   to: '/leagues',
   icon: 'appstore-o',
-  text: '联赛管理'
+  text: 'nav.leagues'
 }, {
   key: 'teams',
   to: '/teams',
   icon: 'team',
-  text: '球队管理'
+  text: 'nav.teams'
 }, {
   key: 'players',
   to: '/players',
   icon: 'user',
-  text: '球员管理'
+  text: 'nav.players'
 }]
 
 @connect(
   state => ({ collapsed: state.sidebar.collapsed })
 )
+@injectIntl
 class PrimarySideBar extends Component {
   static propTypes = {
     collapsed: PropTypes.bool.isRequired
@@ -42,7 +44,8 @@ class PrimarySideBar extends Component {
   }
 
   render() {
-    const { collapsed } = this.props
+    const { collapsed, intl } = this.props
+    console.log(this.props)
     return (
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <a href="/" className="logo"><i /></a>
@@ -51,7 +54,7 @@ class PrimarySideBar extends Component {
             linkConfig.map(item => (
               <Menu.Item key={item.key} onClick={() => this.handleMenuClick(item.to)}>
                 <Icon type={item.icon} />
-                <span>{item.text}</span>
+                <span>{intl.formatMessage({ id: item.text })}</span>
               </Menu.Item>
             ))
           }
