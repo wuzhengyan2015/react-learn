@@ -17,9 +17,7 @@ function App() {
     <IntlProvider locale="zh" messages={zhCN}>
       <Provider store={store}>
         <Router>
-          <div>
-            <Entry />
-          </div>
+          <Entry />
         </Router>
       </Provider>
     </IntlProvider>

@@ -45,7 +45,6 @@ class PrimarySideBar extends Component {
 
   render() {
     const { collapsed, intl } = this.props
-    console.log(this.props)
     return (
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <a href="/" className="logo"><i /></a>
@@ -63,5 +62,7 @@ class PrimarySideBar extends Component {
     )
   }
 }
+
+console.log(PrimarySideBar.isTestable, PrimarySideBar.isTestable2)
 
 export default withRouter(PrimarySideBar)
