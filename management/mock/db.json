@@ -1,0 +1,97 @@
+{
+  "leagues": [{
+    "name": "意甲",
+    "full_name": "意大利足球甲级联赛",
+    "en_name": "Serie A",
+    "country": "意大利",
+    "create_time": 1898,
+    "team_num": 20
+  }, {
+    "name": "英超",
+    "full_name": "英格兰足球超级联赛",
+    "en_name": "Premier League",
+    "country": "英格兰",
+    "create_time": 1992,
+    "team_num": 20
+  }, {
+    "name": "西甲",
+    "full_name": "西班牙足球甲级联赛",
+    "en_name": "La Liga",
+    "country": "西班牙",
+    "create_time": 1929,
+    "team_num": 20
+  }, {
+    "name": "德甲",
+    "full_name": "德国足球甲级联赛",
+    "en_name": "Bundesliga",
+    "country": "德国",
+    "create_time": 1962,
+    "team_num": 18
+  }, {
+    "name": "法甲",
+    "full_name": "法国足球甲级联赛",
+    "en_name": "Ligue 1",
+    "country": "法国",
+    "create_time": 1932,
+    "team_num": 20
+  }, {
+    "name": "葡超",
+    "full_name": "葡萄牙足球超级联赛",
+    "en_name": "Primeira Liga",
+    "country": "葡萄牙",
+    "create_time": 2002,
+    "team_num": 18
+  }, {
+    "name": "荷甲",
+    "full_name": "荷兰足球甲级联赛",
+    "en_name": "Eredivisie",
+    "country": "荷兰",
+    "create_time": 1956,
+    "team_num": 18
+  }, {
+    "name": "阿甲",
+    "full_name": "阿根廷足球甲级联赛",
+    "en_name": "La Primera División Del Fútbol Argentino",
+    "country": "阿根廷",
+    "create_time": 1893,
+    "team_num": 30
+  }, {
+    "name": "巴甲",
+    "full_name": "巴西足球甲级联赛",
+    "en_name": "Campeonato Brasileiro Série A",
+    "country": "巴西",
+    "create_time": 1971,
+    "team_num": 20
+  }, {
+    "name": "中超",
+    "full_name": "中国足球协会超级联赛",
+    "en_name": "Chinese Football Association Super League",
+    "country": "中国",
+    "create_time": 2004,
+    "team_num": 16
+  }, {
+    "name": "K联赛",
+    "full_name": "韩国职业足球联赛",
+    "en_name": "K-League",
+    "country": "韩国",
+    "create_time": 1983,
+    "team_num": 15
+  }, {
+    "name": "J1联赛",
+    "full_name": "日本职业足球甲级联赛",
+    "en_name": "J1 LEAGUE",
+    "country": "日本",
+    "create_time": 1993,
+    "team_num": 18
+  }, {
+    "name": "V联赛",
+    "full_name": "越南职业足球联赛",
+    "en_name": "Vietnamese professional league",
+    "country": "越南",
+    "create_time": 1980,
+    "team_num": 14
+  }],
+  "teams": [{
+
+  }]
+}

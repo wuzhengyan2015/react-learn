@@ -1,6 +1,8 @@
 import axios from 'axios'
 import getLocation from './getGeo'
 
+const prefix = '/api'
+
 const api = {
   login(params) {
     return new Promise((resolve, reject) => {
@@ -28,6 +30,9 @@ const api = {
       city = output.data.regeocode.addressComponent.city
     }
     return axios.get(`https://restapi.amap.com/v3/weather/weatherInfo?city=${city}&key=e7493502e110ecbf28f88d78e7ee3d4a`)
+  },
+  getLeagues() {
+    return axios.get(`${prefix}/leagues`)
   }
 }
 
