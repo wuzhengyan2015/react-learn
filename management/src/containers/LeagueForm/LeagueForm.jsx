@@ -1,71 +1,76 @@
 import React, { Component } from 'react'
 import apiService from '../../services/index'
 import Table from '../../components/Table/Table'
+import Pagination from '../../components/Pagination/Pagination'
+import './style.scss'
 
 const columns = [{
-  title: 'Name',
+  title: '名称',
   dataIndex: 'name',
   key: 'name',
-  render: text => <a>{text}</a>,
 }, {
-  title: 'Age',
-  dataIndex: 'age',
-  key: 'age',
+  title: '成立年份',
+  dataIndex: 'create_time',
+  key: 'create_time',
 }, {
-  title: 'Address',
-  dataIndex: 'address',
-  key: 'address',
+  title: '全称',
+  dataIndex: 'full_name',
+  key: 'full_name',
 }, {
-  title: 'Tags',
-  key: 'tags',
-  dataIndex: 'tags',
-  render: tags => (
-    <span>
-      {tags.map(tag => <span color="blue" key={tag}>{tag}</span>)}
-    </span>
-  ),
+  title: '外文名',
+  dataIndex: 'en_name',
+  key: 'en_name',
 }, {
-  title: 'Action',
+  title: '国家',
+  dataIndex: 'country',
+  key: 'country',
+}, {
+  title: '球队数目',
+  dataIndex: 'team_num',
+  key: 'team_num',
+}, {
+  title: '操作',
   key: 'action',
-  render: (text, record) => (
+  render: () => (
     <span>
-      <a>Invite {record.name}</a>
-      <a>Delete</a>
+      <a className="league-action">编辑</a>
+      <a className="league-action">删除</a>
     </span>
   ),
-}];
-
-const data = [{
-  key: '1',
-  name: 'John Brown',
-  age: 32,
-  address: 'New York No. 1 Lake Park',
-  tags: ['nice', 'developer'],
-}, {
-  key: '2',
-  name: 'Jim Green',
-  age: 42,
-  address: 'London No. 1 Lake Park',
-  tags: ['loser'],
-}, {
-  key: '3',
-  name: 'Joe Black',
-  age: 32,
-  address: 'Sidney No. 1 Lake Park',
-  tags: ['cool', 'teacher'],
 }]
 
-/* eslint-disable */
 class LeagueForm extends Component {
-  componentDidMount () {
+  constructor(props) {
+    super(props)
+    this.state = {
+      leagues: []
+    }
+  }
+
+  componentDidMount() {
+    this.getLeagues()
+  }
+
+  getLeagues() {
     apiService.getLeagues().then((response) => {
-      console.log(response)
+      let leagues = response.data
+      leagues = leagues.map((item) => {
+        const keyItem = item
+        keyItem.key = item.id + 1
+        return keyItem
+      })
+      this.setState({
+        leagues
+      })
     })
   }
+
   render() {
+    const { leagues } = this.state
     return (
       <div className="league-form">
-        <Table dataSource={data} columns={columns}/>
+        <Table dataSource={leagues} columns={columns} />
+        <Pagination total={100} />
       </div>
     )
   }

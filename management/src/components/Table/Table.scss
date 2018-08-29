@@ -23,6 +23,10 @@
   transition: all .3s;
 }
 
+.ui-table-row:last-child .ui-table-td {
+  border-bottom: 0
+}
+
 .ui-table-row:hover .ui-table-td {
   background: #e6f7ff;
 } 
