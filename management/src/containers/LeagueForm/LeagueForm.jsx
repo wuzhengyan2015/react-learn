@@ -43,16 +43,19 @@ class LeagueForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      leagues: []
+      leagues: [],
+      total: 0
     }
+    this.pageSize = 10
   }
 
   componentDidMount() {
-    this.getLeagues()
+    this.getLeagues(1, this.pageSize)
+    this.getTotal()
   }
 
-  getLeagues() {
-    apiService.getLeagues().then((response) => {
+  getLeagues = (page, limit) => {
+    apiService.getLeagues(page, limit).then((response) => {
       let leagues = response.data
       leagues = leagues.map((item) => {
         const keyItem = item
@@ -65,12 +68,24 @@ class LeagueForm extends Component {
     })
   }
 
+  getTotal = () => {
+    apiService.getLeagues().then((response) => {
+      this.setState({
+        total: response.data.length
+      })
+    })
+  }
+
+  handlePageTurn = (page, limit) => {
+    this.getLeagues(page, limit)
+  }
+
   render() {
-    const { leagues } = this.state
+    const { leagues, total } = this.state
     return (
       <div className="league-form">
         <Table dataSource={leagues} columns={columns} />
-        <Pagination total={100} />
+        <Pagination total={total} pageSize={this.pageSize} onChange={this.handlePageTurn} />
       </div>
     )
   }

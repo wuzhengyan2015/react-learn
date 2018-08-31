@@ -31,8 +31,8 @@ const api = {
     }
     return axios.get(`https://restapi.amap.com/v3/weather/weatherInfo?city=${city}&key=e7493502e110ecbf28f88d78e7ee3d4a`)
   },
-  getLeagues() {
-    return axios.get(`${prefix}/leagues`)
+  getLeagues(page = 1, limit = 99) {
+    return axios.get(`${prefix}/leagues?_page=${page}&_limit=${limit}`)
   }
 }
 

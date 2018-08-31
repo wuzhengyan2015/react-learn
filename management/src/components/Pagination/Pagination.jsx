@@ -22,10 +22,19 @@ class Pagination extends PureComponent {
   }
 
   handleClick = (index) => {
-    const { onChange } = this.props
+    const { onChange, total, pageSize } = this.props
     const { current } = this.state
-    if (index !== current) {
-      onChange(index)
+    if (index === 'prev' && current !== 1) {
+      index = current - 1
+    }
+    if (index === 'next' && current !== Math.ceil(total / pageSize)) {
+      index = current + 1
+    }
+    if (index !== current && typeof index === 'number') {
+      onChange(index, pageSize)
+      this.setState({
+        current: index
+      })
     }
   }
 
@@ -35,9 +44,9 @@ class Pagination extends PureComponent {
     const pageNum = Math.ceil(total / pageSize)
     const pageArr = []
     for (let i = 1; i <= pageNum; i++) {
-      const active = i === current ? '' : 'active'
+      const active = i === current ? 'active' : ''
       pageArr.push(
-        <li className={`ui-pagination-item ${active}`} onClick={i => this.handleClick(i)}>
+        <li className={`ui-pagination-item ${active}`} onClick={() => this.handleClick(i)} key={i}>
           <a className="ant-pagination-item-link">{i}</a>
         </li>
       )
@@ -49,12 +58,12 @@ class Pagination extends PureComponent {
     return (
       <div className="ui-pagination">
         <ul className="ui-pagination-list">
-          <li className="ui-pagination-item">
-            <a className="ant-pagination-item-link">&lt;</a>
+          <li className="ui-pagination-item prev" onClick={() => this.handleClick('prev')}>
+            <a className="ant-pagination-item-link"></a>
           </li>
           { this.createPageBtn() }
-          <li className="ui-pagination-item">
-            <a className="ant-pagination-item-link">&gt;</a>
+          <li className="ui-pagination-item next" onClick={() => this.handleClick('next')}>
+            <a className="ant-pagination-item-link"></a>
           </li>
         </ul>
       </div>

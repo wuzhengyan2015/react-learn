@@ -1,7 +1,61 @@
+.ui-pagination {
+  text-align: center
+}
+
 .ui-pagination-list {
-  display: inline-block
+  display: inline-block;
 }
 
 .ui-pagination-item {
-  display: inline-block
+  position: relative;
+  display: inline-block;
+  border-radius: 4px;
+  user-select: none;
+  min-width: 32px;
+  height: 32px;
+  line-height: 30px;
+  text-align: center;
+  list-style: none;
+  vertical-align: middle;
+  border: 1px solid #d9d9d9;
+  background-color: #fff;
+  margin-right: 8px;
+  font-family: Arial;
+  outline: 0;
+  cursor: pointer;
+}
+
+.ui-pagination-item.prev a {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url('../../assets/images/icon-pagination.png') no-repeat;
+  vertical-align: middle;
+  background-size: contain;
+  transform: rotate(180deg)
+}
+
+.ui-pagination-item.next a {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url('../../assets/images/icon-pagination.png') no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+}
+
+.ui-pagination-item:hover,
+.ui-pagination-item.active {
+  transition: all .3s;
+  border-color: #1890ff;
+}
+
+.ui-pagination-item:hover a,
+.ui-pagination-item.active a {
+  color: #1890ff;
+}
+
+.ant-pagination-item-link {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65)
 }
