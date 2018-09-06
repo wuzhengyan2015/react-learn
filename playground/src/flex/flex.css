@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box
+}
+.ui-flex {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  border: 2px solid #ccc;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center
+}
+
+.flex-item {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border: 2px solid #ccc;
+  text-align: center;
+  background-color: #2196f3
+}
+
+.flex-item.one {
+  flex-grow: 1;
+  align-self: flex-end;
+  flex-shrink:0
+}
