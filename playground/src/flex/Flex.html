@@ -53,6 +53,32 @@
     .flex .bottom-bar__praise {
       padding: 0 8px;
     }
+
+    .grid .bottom-bar {
+      display: grid;
+      width: 520px;
+      height: 32px;
+      line-height: 32px;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      grid-template-columns: 1fr 8fr 1fr
+    }
+    .grid .bottom-bar__description {
+      padding: 0 8px;
+      white-space: nowrap
+    }
+
+    .grid .bottom-bar__input {
+      flex: 1
+    }
+    .grid .bottom-bar__input input{
+      width: 100%
+    }
+    .grid .bottom-bar__praise {
+      padding: 0 8px;
+      white-space: nowrap
+    }
     </style>
 </head>
 
@@ -70,7 +96,7 @@
       </div>
     </div>
   </div>
-  <div>grid</div>
+  <div>flex</div>
   <div class="flex">
     <div class="bottom-bar">
       <div class="bottom-bar__description">你的评价</div>
@@ -95,6 +121,29 @@
     </div>
   </div>
   <div>grid</div>
+  <div class="grid">
+    <div class="bottom-bar">
+      <div class="bottom-bar__description">你的评价</div>
+      <div class="bottom-bar__input">
+        <input type="text">
+      </div>
+      <div class="bottom-bar__praise">
+        <button class="praise__thumb-up">点赞</button>
+        <button class="praise__flower">送花</button>
+      </div>
+    </div>
+  
+    <div class="bottom-bar">
+      <div class="bottom-bar__description">Your evaluation</div>
+      <div class="bottom-bar__input">
+        <input type="text">
+      </div>
+      <div class="bottom-bar__praise">
+        <button class="praise__thumb-up">Thumb up</button>
+        <button class="praise__flower">Flower</button>
+      </div>
+    </div>
+  </div>
 
 </body>
 
