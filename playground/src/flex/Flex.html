@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .common .bottom-bar {
+      width: 520px;
+      height: 32px;
+      line-height: 32px;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px
+    }
+    .common .bottom-bar__description {
+      display: inline-block;
+      padding: 0 8px;
+    }
+
+    .common .bottom-bar__input {
+      width: 334px;
+      display: inline-block;
+    }
+    .common .bottom-bar__input input{
+      width: 100%
+    }
+    .common .bottom-bar__praise {
+      display: inline-block;
+      padding: 0 8px;
+    }
+    .flex .bottom-bar {
+      display: flex;
+      width: 520px;
+      height: 32px;
+      line-height: 32px;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px
+    }
+    .flex .bottom-bar__description {
+      padding: 0 8px;
+    }
+
+    .flex .bottom-bar__input {
+      flex: 1
+    }
+    .flex .bottom-bar__input input{
+      width: 100%
+    }
+    .flex .bottom-bar__praise {
+      padding: 0 8px;
+    }
+    </style>
+</head>
+
+<body>
+  <div>common</div>
+  <div class="common">
+    <div class="bottom-bar">
+      <div class="bottom-bar__description">你的评价</div>
+      <div class="bottom-bar__input">
+        <input type="text">
+      </div>
+      <div class="bottom-bar__praise">
+        <button class="praise__thumb-up">点赞</button>
+        <button class="praise__flower">送花</button>
+      </div>
+    </div>
+  </div>
+  <div>grid</div>
+  <div class="flex">
+    <div class="bottom-bar">
+      <div class="bottom-bar__description">你的评价</div>
+      <div class="bottom-bar__input">
+        <input type="text">
+      </div>
+      <div class="bottom-bar__praise">
+        <button class="praise__thumb-up">点赞</button>
+        <button class="praise__flower">送花</button>
+      </div>
+    </div>
+  
+    <div class="bottom-bar">
+      <div class="bottom-bar__description">Your evaluation</div>
+      <div class="bottom-bar__input">
+        <input type="text">
+      </div>
+      <div class="bottom-bar__praise">
+        <button class="praise__thumb-up">Thumb up</button>
+        <button class="praise__flower">Flower</button>
+      </div>
+    </div>
+  </div>
+  <div>grid</div>
+
+</body>
+
+</html>
