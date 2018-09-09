@@ -1,0 +1,32 @@
+.ui-table,
+.ui-table table {
+  width: 100%;
+}
+
+.ui-table-th,
+.ui-table-td {
+  padding: 16px 16px;
+  word-break: break-word;
+}
+
+.ui-table-th {
+  background: #fafafa;
+  transition: 'background .3s ease';
+  text-align: left;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.ui-table-td {
+  border-bottom: 1px solid #e8e8e8;
+  transition: all .3s;
+}
+
+.ui-table-row:last-child .ui-table-td {
+  border-bottom: 0
+}
+
+.ui-table-row:hover .ui-table-td {
+  background: #e6f7ff;
+} 

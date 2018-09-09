@@ -5,7 +5,7 @@ import LeagueForm from '../../containers/LeagueForm/LeagueForm'
 class LeaguePage extends Component {
   render () {
     return (
-      <div>
+      <div className="leaguePage">
         <LeagueForm />
       </div>
     )
