@@ -7,14 +7,14 @@ import ReduxPromiseDemo from './redux-promise/index'
 import axios from 'axios'
 import BaseContext from './context/BaseContext'
 import Modal from './portals/Portals'
+import Flex from './flex/Flex'
+import Grid from './grid/grid'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Modal>
-          {[1, 2, 3, 4]}
-        </Modal>
+        <Grid />
       </div>
     )
   }
