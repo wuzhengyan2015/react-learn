@@ -3,7 +3,10 @@ import { Modal } from 'antd';
 import apiService from '../../services/index'
 import Table from '../../components/Table/Table'
 import Pagination from '../../components/Pagination/Pagination'
+import LeagueEditForm from '../LeagueEditForm/LeagueEditForm'
 import './style.scss'
+
+const editFormWidth = 680
 
 const getColumns = (edit, del) => (
   [
@@ -32,7 +35,6 @@ class LeagueForm extends Component {
     this.state = {
       leagues: [],
       total: 0,
-      ModalText: 'Content of the modal',
       visible: false,
       confirmLoading: false,
     }
@@ -70,6 +72,10 @@ class LeagueForm extends Component {
     this.getLeagues(page, limit)
   }
 
+  handleDelete = (id) => {
+    console.log(id)
+  }
+
   showModal = () => {
     this.setState({
       visible: true,
@@ -78,7 +84,6 @@ class LeagueForm extends Component {
 
   handleOk = () => {
     this.setState({
-      ModalText: 'The modal will be closed after two seconds',
       confirmLoading: true,
     });
     setTimeout(() => {
@@ -98,21 +103,24 @@ class LeagueForm extends Component {
 
   render() {
     const {
-      leagues, total, visible, confirmLoading, ModalText
+      leagues, total, visible, confirmLoading
     } = this.state
     return (
       <div className="league-form">
-        <Table dataSource={leagues} columns={getColumns(this.showModal, () => {})} />
+        <Table dataSource={leagues} columns={getColumns(this.showModal, this.handleDelete)} />
         <div className="form-pagination">
           <Pagination total={total} pageSize={this.pageSize} onChange={this.handlePageTurn} />
         </div>
-        <Modal title="Title"
+        <Modal title="编辑联赛"
           visible={visible}
           onOk={this.handleOk}
           confirmLoading={confirmLoading}
           onCancel={this.handleCancel}
+          width={editFormWidth}
+          cancelText="取消"
+          okText="确定"
         >
-          <p>{ModalText}</p>
+          <LeagueEditForm />
         </Modal>
       </div>
     )
