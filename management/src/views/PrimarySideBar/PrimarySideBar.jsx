@@ -63,6 +63,4 @@ class PrimarySideBar extends Component {
   }
 }
 
-console.log(PrimarySideBar.isTestable, PrimarySideBar.isTestable2)
-
 export default withRouter(PrimarySideBar)

@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { Modal } from 'antd';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import apiService from '../../services/index'
 import Table from '../../components/Table/Table'
 import Pagination from '../../components/Pagination/Pagination'
 import LeagueEditForm from '../LeagueEditForm/LeagueEditForm'
+import { getLeagues } from '../../redux/actions/league'
 import './style.scss'
 
 const editFormWidth = 680
@@ -29,11 +32,14 @@ const getColumns = (edit, del) => (
   ]
 )
 
+@connect(
+  state => ({ leagues: state.leagues }),
+  dispatch => bindActionCreators({ getLeagues }, dispatch)
+)
 class LeagueForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      leagues: [],
       total: 0,
       visible: false,
       confirmLoading: false,
@@ -47,17 +53,8 @@ class LeagueForm extends Component {
   }
 
   getLeagues = (page, limit) => {
-    apiService.getLeagues(page, limit).then((response) => {
-      let leagues = response.data
-      leagues = leagues.map((item) => {
-        const keyItem = item
-        keyItem.key = item.id + 1
-        return keyItem
-      })
-      this.setState({
-        leagues
-      })
-    })
+    const { getLeagues } = this.props
+    getLeagues(page, limit)
   }
 
   getTotal = () => {
@@ -103,11 +100,12 @@ class LeagueForm extends Component {
 
   render() {
     const {
-      leagues, total, visible, confirmLoading
+      total, visible, confirmLoading
     } = this.state
+    const { leagues } = this.props
     return (
       <div className="league-form">
-        <Table dataSource={leagues} columns={getColumns(this.showModal, this.handleDelete)} />
+        <Table dataSource={leagues.list} columns={getColumns(this.showModal, this.handleDelete)} />
         <div className="form-pagination">
           <Pagination total={total} pageSize={this.pageSize} onChange={this.handlePageTurn} />
         </div>
