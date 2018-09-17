@@ -2,6 +2,7 @@ import axios from 'axios'
 import getLocation from './getGeo'
 
 const prefix = '/api'
+axios.interceptors.response.use(response => response.data);
 
 const api = {
   login(params) {
@@ -32,7 +33,13 @@ const api = {
     return axios.get(`https://restapi.amap.com/v3/weather/weatherInfo?city=${city}&key=e7493502e110ecbf28f88d78e7ee3d4a`)
   },
   getLeagues(page = 1, limit = 99, query = '') {
-    return axios.get(`${prefix}/leagues?_page=${page}&_limit=${limit}&name_like=${query}`)
+    // return axios.get(`${prefix}/leagues?_page=${page}&_limit=${limit}&name_like=${query}`)
+    return axios.all([axios.get(`${prefix}/leagues?_page=${page}&_limit=${limit}&name_like=${query}`),
+      axios.get(`${prefix}/leagues?_page=1&_limit=99&name_like=${query}`)]).then(axios.spread((items, total) => [items, total]))
+  },
+  addLeague(params) {
+    params.id = 100 + Math.floor(Math.random() * 200)
+    return axios.post(`${prefix}/leagues`, params)
   }
 }
 

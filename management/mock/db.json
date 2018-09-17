@@ -1,299 +1,356 @@
 {
-  "leagues": [{
-    "id": "001",
-    "name": "意甲",
-    "full_name": "意大利足球甲级联赛",
-    "en_name": "Serie A",
-    "country": "意大利",
-    "create_time": 1898,
-    "team_num": 20
-  }, {
-    "id": "002",
-    "name": "英超",
-    "full_name": "英格兰足球超级联赛",
-    "en_name": "Premier League",
-    "country": "英格兰",
-    "create_time": 1992,
-    "team_num": 20
-  }, {
-    "id": "003",
-    "name": "西甲",
-    "full_name": "西班牙足球甲级联赛",
-    "en_name": "La Liga",
-    "country": "西班牙",
-    "create_time": 1929,
-    "team_num": 20
-  }, {
-    "id": "013",
-    "name": "德甲",
-    "full_name": "德国足球甲级联赛",
-    "en_name": "Bundesliga",
-    "country": "德国",
-    "create_time": 1962,
-    "team_num": 18
-  }, {
-    "id": "004",
-    "name": "法甲",
-    "full_name": "法国足球甲级联赛",
-    "en_name": "Ligue 1",
-    "country": "法国",
-    "create_time": 1932,
-    "team_num": 20
-  }, {
-    "id": "005",
-    "name": "葡超",
-    "full_name": "葡萄牙足球超级联赛",
-    "en_name": "Primeira Liga",
-    "country": "葡萄牙",
-    "create_time": 2002,
-    "team_num": 18
-  }, {
-    "id": "006",
-    "name": "荷甲",
-    "full_name": "荷兰足球甲级联赛",
-    "en_name": "Eredivisie",
-    "country": "荷兰",
-    "create_time": 1956,
-    "team_num": 18
-  }, {
-    "id": "007",
-    "name": "阿甲",
-    "full_name": "阿根廷足球甲级联赛",
-    "en_name": "La Primera División Del Fútbol Argentino",
-    "country": "阿根廷",
-    "create_time": 1893,
-    "team_num": 30
-  }, {
-    "id": "008",
-    "name": "巴甲",
-    "full_name": "巴西足球甲级联赛",
-    "en_name": "Campeonato Brasileiro Série A",
-    "country": "巴西",
-    "create_time": 1971,
-    "team_num": 20
-  }, {
-    "id": "009",
-    "name": "中超",
-    "full_name": "中国足球协会超级联赛",
-    "en_name": "Chinese Football Association Super League",
-    "country": "中国",
-    "create_time": 2004,
-    "team_num": 16
-  }, {
-    "id": "010",
-    "name": "K联赛",
-    "full_name": "韩国职业足球联赛",
-    "en_name": "K-League",
-    "country": "韩国",
-    "create_time": 1983,
-    "team_num": 15
-  }, {
-    "id": "011",
-    "name": "J1联赛",
-    "full_name": "日本职业足球甲级联赛",
-    "en_name": "J1 LEAGUE",
-    "country": "日本",
-    "create_time": 1993,
-    "team_num": 18
-  }, {
-    "id": "012",
-    "name": "V联赛",
-    "full_name": "越南职业足球联赛",
-    "en_name": "Vietnamese professional league",
-    "country": "越南",
-    "create_time": 1980,
-    "team_num": 14
-  }],
-  "teams": [{
-    "id": "t001",
-    "name": "皇马",
-    "full_name": "皇家马德里足球俱乐部",
-    "en_name": "Real Madrid Club de Fútbol",
-    "league": "西甲",
-    "create_time": 1902
-  }, {
-    "id": "t002",
-    "name": "巴塞",
-    "full_name": "巴塞罗那足球俱乐部",
-    "en_name": "Fútbol Club Barcelona",
-    "league": "西甲",
-    "create_time": 1899
-  }, {
-    "id": "t003",
-    "name": "马竞",
-    "full_name": "马德里竞技足球俱乐部",
-    "en_name": "Club Atlético de Madrid S.A.D",
-    "league": "西甲",
-    "create_time": 1903
-  }, {
-    "id": "t004",
-    "name": "塞维利亚",
-    "full_name": "塞维利亚足球俱乐部",
-    "en_name": "Sevilla Fútbol Club",
-    "league": "西甲",
-    "create_time": 1905
-  }, {
-    "id": "t005",
-    "name": "拜仁",
-    "full_name": "拜仁慕尼黑足球俱乐部",
-    "en_name": "FC Bayern Munich",
-    "league": "德甲",
-    "create_time": 1900
-  }, {
-    "id": "t006",
-    "name": "多特蒙德",
-    "full_name": "多特蒙德足球俱乐部",
-    "en_name": "Borussia Dortmund",
-    "league": "德甲",
-    "create_time": 1909
-  }, {
-    "id": "t007",
-    "name": "沃尔夫斯堡",
-    "full_name": "沃尔夫斯堡足球俱乐部",
-    "en_name": "VfL Wolfsburg",
-    "league": "德甲",
-    "create_time": 1945
-  }, {
-    "id": "t008",
-    "name": "沙尔克04",
-    "full_name": "沙尔克04足球俱乐部",
-    "en_name": "Futball-Club Gelsenkirchen-Schalke 04",
-    "league": "德甲",
-    "create_time": 1904
-  }, {
-    "id": "t009",
-    "name": "曼联",
-    "full_name": "曼彻斯特联足球俱乐部",
-    "en_name": "Manchester United",
-    "league": "英超",
-    "create_time": 1878
-  }, {
-    "id": "t010",
-    "name": "阿森纳",
-    "full_name": "阿森纳足球俱乐部",
-    "en_name": "Arsenal Football Club",
-    "league": "英超",
-    "create_time": 1886
-  }, {
-    "id": "t011",
-    "name": "切尔西",
-    "full_name": "切尔西足球俱乐部",
-    "en_name": "Chelsea Football Club",
-    "league": "英超",
-    "create_time": 1905
-  }, {
-    "id": "t012",
-    "name": "利物浦",
-    "full_name": "利物浦足球俱乐部",
-    "en_name": "Liverpool Football Club",
-    "league": "英超",
-    "create_time": 1892
-  }, {
-    "id": "t013",
-    "name": "曼城",
-    "full_name": "曼彻斯特城足球俱乐部",
-    "en_name": "Manchester City F.C.",
-    "league": "英超",
-    "create_time": 1880
-  }, {
-    "id": "t014",
-    "name": "国米",
-    "full_name": "国际米兰足球俱乐部",
-    "en_name": "F.C Internazionale Milano",
-    "league": "意甲",
-    "create_time": 1908
-  }, {
-    "id": "t015",
-    "name": "AC米兰",
-    "full_name": "AC米兰足球俱乐部",
-    "en_name": "Associazione Calcio Milan",
-    "league": "意甲",
-    "create_time": 1899
-  }, {
-    "id": "t016",
-    "name": "尤文图斯",
-    "full_name": "尤文图斯足球俱乐部",
-    "en_name": "Juventus F.C.",
-    "league": "意甲",
-    "create_time": 1897
-  }, {
-    "id": "t017",
-    "name": "罗马",
-    "full_name": "罗马足球俱乐部",
-    "en_name": "Associazione Sportiva Roma",
-    "league": "意甲",
-    "create_time": 1927
-  }, {
-    "id": "t018",
-    "name": "巴黎",
-    "full_name": "巴黎圣日耳曼足球俱乐部",
-    "en_name": "Paris Saint-Germain F.C.",
-    "league": "法甲",
-    "create_time": 1970
-  }, {
-    "id": "t019",
-    "name": "里昂",
-    "full_name": "里昂足球俱乐部",
-    "en_name": "LYONNAIS",
-    "league": "法甲",
-    "create_time": 1950
-  }, {
-    "id": "t020",
-    "name": "阿贾克斯",
-    "full_name": "阿贾克斯足球俱乐部",
-    "en_name": "Amsterdamsche Football Club Ajax N.V.",
-    "league": "荷甲",
-    "create_time": 1900
-  }, {
-    "id": "t021",
-    "name": "埃因霍温",
-    "full_name": "埃因霍温足球俱乐部",
-    "en_name": "Philips Sport Vereniging",
-    "league": "荷甲",
-    "create_time": 1913
-  }],
-  "players": [{
-    "id": "p001",
-    "name": "卡里姆·本泽马",
-    "shirt_num": "9",
-    "country": "法国",
-    "birthday": "1987-12-19",
-    "transfer_fee": "€3500万"
-  }, {
-    "id": "p002",
-    "name": "加雷斯·贝尔",
-    "shirt_num": "11",
-    "country": "威尔士",
-    "birthday": "1989-07-16",
-    "transfer_fee": "€9100万"
-  }, {
-    "id": "p003",
-    "name": "马尔科·阿森西奥",
-    "shirt_num": "201",
-    "country": "西班牙",
-    "birthday": "1996-01-21",
-    "transfer_fee": "€390万"
-  }],
-  "UEFA_Champions": [{
-    "team": "皇家马德里",
-    "champions": 13
-  }, {
-    "team": "AC米兰",
-    "champions": 7
-  }, {
-    "team": "拜仁慕尼黑",
-    "champions": 5
-  }, {
-    "team": "巴塞罗那",
-    "champions": 5
-  }, {
-    "team": "利物浦",
-    "champions": 5
-  }, {
-    "team": "阿贾克斯",
-    "champions": 4
-  }, {
-    "team": "国际米兰",
-    "champions": 4
-  }]
+  "leagues": [
+    {
+      "id": "001",
+      "name": "意甲",
+      "full_name": "意大利足球甲级联赛",
+      "en_name": "Serie A",
+      "country": "意大利",
+      "create_time": 1898,
+      "team_num": 20
+    },
+    {
+      "id": "002",
+      "name": "英超",
+      "full_name": "英格兰足球超级联赛",
+      "en_name": "Premier League",
+      "country": "英格兰",
+      "create_time": 1992,
+      "team_num": 20
+    },
+    {
+      "id": "003",
+      "name": "西甲",
+      "full_name": "西班牙足球甲级联赛",
+      "en_name": "La Liga",
+      "country": "西班牙",
+      "create_time": 1929,
+      "team_num": 20
+    },
+    {
+      "id": "013",
+      "name": "德甲",
+      "full_name": "德国足球甲级联赛",
+      "en_name": "Bundesliga",
+      "country": "德国",
+      "create_time": 1962,
+      "team_num": 18
+    },
+    {
+      "id": "004",
+      "name": "法甲",
+      "full_name": "法国足球甲级联赛",
+      "en_name": "Ligue 1",
+      "country": "法国",
+      "create_time": 1932,
+      "team_num": 20
+    },
+    {
+      "id": "005",
+      "name": "葡超",
+      "full_name": "葡萄牙足球超级联赛",
+      "en_name": "Primeira Liga",
+      "country": "葡萄牙",
+      "create_time": 2002,
+      "team_num": 18
+    },
+    {
+      "id": "006",
+      "name": "荷甲",
+      "full_name": "荷兰足球甲级联赛",
+      "en_name": "Eredivisie",
+      "country": "荷兰",
+      "create_time": 1956,
+      "team_num": 18
+    },
+    {
+      "id": "007",
+      "name": "阿甲",
+      "full_name": "阿根廷足球甲级联赛",
+      "en_name": "La Primera División Del Fútbol Argentino",
+      "country": "阿根廷",
+      "create_time": 1893,
+      "team_num": 30
+    },
+    {
+      "id": "008",
+      "name": "巴甲",
+      "full_name": "巴西足球甲级联赛",
+      "en_name": "Campeonato Brasileiro Série A",
+      "country": "巴西",
+      "create_time": 1971,
+      "team_num": 20
+    },
+    {
+      "id": "009",
+      "name": "中超",
+      "full_name": "中国足球协会超级联赛",
+      "en_name": "Chinese Football Association Super League",
+      "country": "中国",
+      "create_time": 2004,
+      "team_num": 16
+    },
+    {
+      "id": "010",
+      "name": "K联赛",
+      "full_name": "韩国职业足球联赛",
+      "en_name": "K-League",
+      "country": "韩国",
+      "create_time": 1983,
+      "team_num": 15
+    },
+    {
+      "id": "011",
+      "name": "J1联赛",
+      "full_name": "日本职业足球甲级联赛",
+      "en_name": "J1 LEAGUE",
+      "country": "日本",
+      "create_time": 1993,
+      "team_num": 18
+    },
+    {
+      "id": "012",
+      "name": "V联赛",
+      "full_name": "越南职业足球联赛",
+      "en_name": "Vietnamese professional league",
+      "country": "越南",
+      "create_time": 1980,
+      "team_num": 14
+    },
+    {
+      "id": "0011",
+      "name": "意甲",
+      "full_name": "意大利足球甲级联赛",
+      "en_name": "Serie A",
+      "country": "意大利",
+      "create_time": 1898,
+      "team_num": 20
+    }
+  ],
+  "teams": [
+    {
+      "id": "t001",
+      "name": "皇马",
+      "full_name": "皇家马德里足球俱乐部",
+      "en_name": "Real Madrid Club de Fútbol",
+      "league": "西甲",
+      "create_time": 1902
+    },
+    {
+      "id": "t002",
+      "name": "巴塞",
+      "full_name": "巴塞罗那足球俱乐部",
+      "en_name": "Fútbol Club Barcelona",
+      "league": "西甲",
+      "create_time": 1899
+    },
+    {
+      "id": "t003",
+      "name": "马竞",
+      "full_name": "马德里竞技足球俱乐部",
+      "en_name": "Club Atlético de Madrid S.A.D",
+      "league": "西甲",
+      "create_time": 1903
+    },
+    {
+      "id": "t004",
+      "name": "塞维利亚",
+      "full_name": "塞维利亚足球俱乐部",
+      "en_name": "Sevilla Fútbol Club",
+      "league": "西甲",
+      "create_time": 1905
+    },
+    {
+      "id": "t005",
+      "name": "拜仁",
+      "full_name": "拜仁慕尼黑足球俱乐部",
+      "en_name": "FC Bayern Munich",
+      "league": "德甲",
+      "create_time": 1900
+    },
+    {
+      "id": "t006",
+      "name": "多特蒙德",
+      "full_name": "多特蒙德足球俱乐部",
+      "en_name": "Borussia Dortmund",
+      "league": "德甲",
+      "create_time": 1909
+    },
+    {
+      "id": "t007",
+      "name": "沃尔夫斯堡",
+      "full_name": "沃尔夫斯堡足球俱乐部",
+      "en_name": "VfL Wolfsburg",
+      "league": "德甲",
+      "create_time": 1945
+    },
+    {
+      "id": "t008",
+      "name": "沙尔克04",
+      "full_name": "沙尔克04足球俱乐部",
+      "en_name": "Futball-Club Gelsenkirchen-Schalke 04",
+      "league": "德甲",
+      "create_time": 1904
+    },
+    {
+      "id": "t009",
+      "name": "曼联",
+      "full_name": "曼彻斯特联足球俱乐部",
+      "en_name": "Manchester United",
+      "league": "英超",
+      "create_time": 1878
+    },
+    {
+      "id": "t010",
+      "name": "阿森纳",
+      "full_name": "阿森纳足球俱乐部",
+      "en_name": "Arsenal Football Club",
+      "league": "英超",
+      "create_time": 1886
+    },
+    {
+      "id": "t011",
+      "name": "切尔西",
+      "full_name": "切尔西足球俱乐部",
+      "en_name": "Chelsea Football Club",
+      "league": "英超",
+      "create_time": 1905
+    },
+    {
+      "id": "t012",
+      "name": "利物浦",
+      "full_name": "利物浦足球俱乐部",
+      "en_name": "Liverpool Football Club",
+      "league": "英超",
+      "create_time": 1892
+    },
+    {
+      "id": "t013",
+      "name": "曼城",
+      "full_name": "曼彻斯特城足球俱乐部",
+      "en_name": "Manchester City F.C.",
+      "league": "英超",
+      "create_time": 1880
+    },
+    {
+      "id": "t014",
+      "name": "国米",
+      "full_name": "国际米兰足球俱乐部",
+      "en_name": "F.C Internazionale Milano",
+      "league": "意甲",
+      "create_time": 1908
+    },
+    {
+      "id": "t015",
+      "name": "AC米兰",
+      "full_name": "AC米兰足球俱乐部",
+      "en_name": "Associazione Calcio Milan",
+      "league": "意甲",
+      "create_time": 1899
+    },
+    {
+      "id": "t016",
+      "name": "尤文图斯",
+      "full_name": "尤文图斯足球俱乐部",
+      "en_name": "Juventus F.C.",
+      "league": "意甲",
+      "create_time": 1897
+    },
+    {
+      "id": "t017",
+      "name": "罗马",
+      "full_name": "罗马足球俱乐部",
+      "en_name": "Associazione Sportiva Roma",
+      "league": "意甲",
+      "create_time": 1927
+    },
+    {
+      "id": "t018",
+      "name": "巴黎",
+      "full_name": "巴黎圣日耳曼足球俱乐部",
+      "en_name": "Paris Saint-Germain F.C.",
+      "league": "法甲",
+      "create_time": 1970
+    },
+    {
+      "id": "t019",
+      "name": "里昂",
+      "full_name": "里昂足球俱乐部",
+      "en_name": "LYONNAIS",
+      "league": "法甲",
+      "create_time": 1950
+    },
+    {
+      "id": "t020",
+      "name": "阿贾克斯",
+      "full_name": "阿贾克斯足球俱乐部",
+      "en_name": "Amsterdamsche Football Club Ajax N.V.",
+      "league": "荷甲",
+      "create_time": 1900
+    },
+    {
+      "id": "t021",
+      "name": "埃因霍温",
+      "full_name": "埃因霍温足球俱乐部",
+      "en_name": "Philips Sport Vereniging",
+      "league": "荷甲",
+      "create_time": 1913
+    }
+  ],
+  "players": [
+    {
+      "id": "p001",
+      "name": "卡里姆·本泽马",
+      "shirt_num": "9",
+      "country": "法国",
+      "birthday": "1987-12-19",
+      "transfer_fee": "€3500万"
+    },
+    {
+      "id": "p002",
+      "name": "加雷斯·贝尔",
+      "shirt_num": "11",
+      "country": "威尔士",
+      "birthday": "1989-07-16",
+      "transfer_fee": "€9100万"
+    },
+    {
+      "id": "p003",
+      "name": "马尔科·阿森西奥",
+      "shirt_num": "201",
+      "country": "西班牙",
+      "birthday": "1996-01-21",
+      "transfer_fee": "€390万"
+    }
+  ],
+  "UEFA_Champions": [
+    {
+      "team": "皇家马德里",
+      "champions": 13
+    },
+    {
+      "team": "AC米兰",
+      "champions": 7
+    },
+    {
+      "team": "拜仁慕尼黑",
+      "champions": 5
+    },
+    {
+      "team": "巴塞罗那",
+      "champions": 5
+    },
+    {
+      "team": "利物浦",
+      "champions": 5
+    },
+    {
+      "team": "阿贾克斯",
+      "champions": 4
+    },
+    {
+      "team": "国际米兰",
+      "champions": 4
+    }
+  ]
 }

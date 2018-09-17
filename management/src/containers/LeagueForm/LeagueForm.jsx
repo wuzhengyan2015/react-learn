@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import { Modal } from 'antd';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import apiService from '../../services/index'
 import Table from '../../components/Table/Table'
 import Pagination from '../../components/Pagination/Pagination'
-import LeagueEditForm from '../LeagueEditForm/LeagueEditForm'
 import { getLeagues } from '../../redux/actions/league'
 import './style.scss'
-
-const editFormWidth = 680
 
 const getColumns = (edit, del) => (
   [
@@ -39,30 +34,16 @@ const getColumns = (edit, del) => (
 class LeagueForm extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      total: 0,
-      visible: false,
-      confirmLoading: false,
-    }
     this.pageSize = 10
   }
 
   componentDidMount() {
     this.getLeagues(1, this.pageSize)
-    this.getTotal()
   }
 
   getLeagues = (page, limit) => {
     const { getLeagues } = this.props
     getLeagues(page, limit)
-  }
-
-  getTotal = () => {
-    apiService.getLeagues().then((response) => {
-      this.setState({
-        total: response.data.length
-      })
-    })
   }
 
   handlePageTurn = (page, limit) => {
@@ -73,53 +54,21 @@ class LeagueForm extends Component {
     console.log(id)
   }
 
-  showModal = () => {
-    this.setState({
-      visible: true,
-    })
-  }
-
-  handleOk = () => {
-    this.setState({
-      confirmLoading: true,
-    });
-    setTimeout(() => {
-      this.setState({
-        visible: false,
-        confirmLoading: false,
-      });
-    }, 2000)
-  }
-
-  handleCancel = () => {
-    console.log('Clicked cancel button');
-    this.setState({
-      visible: false,
-    })
-  }
-
   render() {
-    const {
-      total, visible, confirmLoading
-    } = this.state
-    const { leagues } = this.props
+    const { leagues, edit } = this.props
     return (
       <div className="league-form">
-        <Table dataSource={leagues.list} columns={getColumns(this.showModal, this.handleDelete)} />
+        <Table
+          dataSource={leagues.list.items}
+          columns={getColumns(edit, this.handleDelete)}
+        />
         <div className="form-pagination">
-          <Pagination total={total} pageSize={this.pageSize} onChange={this.handlePageTurn} />
+          <Pagination
+            total={leagues.list.total}
+            pageSize={this.pageSize}
+            onChange={this.handlePageTurn}
+          />
         </div>
-        <Modal title="编辑联赛"
-          visible={visible}
-          onOk={this.handleOk}
-          confirmLoading={confirmLoading}
-          onCancel={this.handleCancel}
-          width={editFormWidth}
-          cancelText="取消"
-          okText="确定"
-        >
-          <LeagueEditForm />
-        </Modal>
       </div>
     )
   }

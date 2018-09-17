@@ -10,20 +10,28 @@ const handleLeagues = list => list.map((item) => {
 const reducer = handleActions({
   [GET_LEAGUES]: {
     next(state, action) {
-      return { list: handleLeagues(action.payload.data) }
+      return {
+        list: {
+          items: handleLeagues(action.payload[0]), total: action.payload[1].length
+        }
+      }
     },
-    throw() {
-      return { isLogin: false }
+    throw(state) {
+      return state
     }
   },
   [SEARCH_LEAGUES]: {
     next(state, action) {
-      return { list: handleLeagues(action.payload.data) }
+      return {
+        list: {
+          items: handleLeagues(action.payload[0]), total: action.payload[1].length
+        }
+      }
     },
     throw(state) {
       return state
     }
   }
-}, { list: [] })
+}, { list: { items: [], total: 0 } })
 
 export default reducer
