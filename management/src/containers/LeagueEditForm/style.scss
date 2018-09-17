@@ -26,6 +26,19 @@
       &:focus {
         border-color: #40a9ff
       }
+      &.lack {
+        border-color: #f44336
+      }
     }
   }
+}
+
+.float-right {
+  float: right
+}
+
+.clearfix:before {
+  content: "";
+  display: block;
+  clear: both;
 }

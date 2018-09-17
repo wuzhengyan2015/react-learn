@@ -17,8 +17,7 @@ class LeaguePage extends Component {
   state = {
     searchTxt: '',
     type: '',
-    visible: false,
-    confirmLoading: false,
+    visible: false
   }
 
   handleChagne = (e) => {
@@ -47,17 +46,13 @@ class LeaguePage extends Component {
     })
   }
 
-  handleOk = () => {
+  handleOk = (params) => {
     const { addLeague } = this.props
-    this.setState({
-      confirmLoading: true,
-    })
     addLeague({
-      name: 'test3'
+      params
     }).then(() => {
       this.setState({
         visible: false,
-        confirmLoading: false,
       })
     })
   }
@@ -71,7 +66,7 @@ class LeaguePage extends Component {
 
   render() {
     const {
-      searchTxt, visible, confirmLoading, type
+      searchTxt, visible, type
     } = this.state
     return (
       <div className="leaguePage">
@@ -87,14 +82,11 @@ class LeaguePage extends Component {
         <LeagueForm edit={this.editLeague} />
         <Modal title={type === 'add' ? '增加联赛' : '编辑联赛'}
           visible={visible}
-          onOk={this.handleOk}
-          confirmLoading={confirmLoading}
           onCancel={this.handleCancel}
           width={editFormWidth}
-          cancelText="取消"
-          okText="确定"
+          footer={null}
         >
-          <LeagueEditForm />
+          <LeagueEditForm onCancel={this.handleCancel} onOk={this.onOk} />
         </Modal>
       </div>
     )

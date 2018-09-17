@@ -116,15 +116,6 @@
       "country": "越南",
       "create_time": 1980,
       "team_num": 14
-    },
-    {
-      "id": "0011",
-      "name": "意甲",
-      "full_name": "意大利足球甲级联赛",
-      "en_name": "Serie A",
-      "country": "意大利",
-      "create_time": 1898,
-      "team_num": 20
     }
   ],
   "teams": [

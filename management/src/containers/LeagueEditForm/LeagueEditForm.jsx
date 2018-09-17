@@ -11,6 +11,22 @@ class LeagueEditForm extends Component {
     teamNum: ''
   }
 
+  onSubmit = () => {
+    const { onOk } = this.props
+    const {
+      name, fullName, enName, country, createTime, teamNum
+    } = this.state
+    const params = {
+      name,
+      full_name: fullName,
+      en_name: enName,
+      country,
+      create_time: createTime,
+      team_num: teamNum
+    }
+    onOk(params)
+  }
+
   handleChange = (key, e) => {
     this.setState({
       [key]: e.target.value
@@ -21,6 +37,7 @@ class LeagueEditForm extends Component {
     const {
       name, fullName, enName, country, createTime, teamNum
     } = this.state
+    const { onCancel } = this.props
     return (
       <div className="league-edit__form">
         <div className="form__group">
@@ -58,6 +75,10 @@ class LeagueEditForm extends Component {
             <span className="label-name">球队数：</span>
             <input value={teamNum} id="leagueTeamNum" onChange={e => this.handleChange('teamNum', e)} className="input" type="text" />
           </label>
+        </div>
+        <div className="form__group clearfix">
+          <a className="ui-btn float-right" onClick={this.onSubmit}>确认</a>
+          <a className="ui-btn float-right" onClick={onCancel}>取消</a>
         </div>
       </div>
     )
