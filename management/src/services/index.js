@@ -40,6 +40,12 @@ const api = {
   addLeague(params) {
     params.id = 100 + Math.floor(Math.random() * 200)
     return axios.post(`${prefix}/leagues`, params)
+  },
+  putLeague(id, params) {
+    return axios.put(`${prefix}/leagues/${id}`, params)
+  },
+  deleteLeague(id) {
+    return axios.delete(`${prefix}/leagues/${id}`)
   }
 }
 

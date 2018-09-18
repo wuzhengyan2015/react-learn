@@ -4,20 +4,25 @@ import { connect } from 'react-redux'
 import { Modal } from 'antd'
 import LeagueForm from '../../containers/LeagueForm/LeagueForm'
 import LeagueEditForm from '../../containers/LeagueEditForm/LeagueEditForm'
-import { searchLeagues, addLeague } from '../../redux/actions/league'
+import {
+  searchLeagues, addLeague, getLeagues, putLeague, deleteLeague
+} from '../../redux/actions/league'
 import './style.scss'
 
 const editFormWidth = 680
 
 @connect(
   state => state,
-  dispatch => bindActionCreators({ searchLeagues, addLeague }, dispatch)
+  dispatch => bindActionCreators({
+    searchLeagues, addLeague, getLeagues, putLeague, deleteLeague
+  }, dispatch)
 )
 class LeaguePage extends Component {
   state = {
     searchTxt: '',
     type: '',
-    visible: false
+    visible: false,
+    initData: null
   }
 
   handleChagne = (e) => {
@@ -39,34 +44,48 @@ class LeaguePage extends Component {
     })
   }
 
-  editLeague = () => {
+  editLeague = (content, record) => {
     this.setState({
       type: 'edit',
       visible: true,
+      initData: record
     })
   }
 
   handleOk = (params) => {
-    const { addLeague } = this.props
-    addLeague({
-      params
-    }).then(() => {
+    const { addLeague, getLeagues } = this.props
+    const { type } = this.state
+    if (type === 'add') {
+      return addLeague({
+        ...params
+      }).then(() => {
+        this.setState({
+          visible: false,
+          initData: null
+        })
+        getLeagues(1, 10)
+      })
+    }
+    const { id, ...rest } = params
+    return putLeague(id, rest).payload.then(() => {
       this.setState({
         visible: false,
+        initData: null
       })
+      getLeagues(1, 10)
     })
   }
 
   handleCancel = () => {
-    console.log('Clicked cancel button')
     this.setState({
       visible: false,
+      initData: null
     })
   }
 
   render() {
     const {
-      searchTxt, visible, type
+      searchTxt, visible, type, initData
     } = this.state
     return (
       <div className="leaguePage">
@@ -86,7 +105,7 @@ class LeaguePage extends Component {
           width={editFormWidth}
           footer={null}
         >
-          <LeagueEditForm onCancel={this.handleCancel} onOk={this.onOk} />
+          <LeagueEditForm initData={initData} onCancel={this.handleCancel} onOk={this.handleOk} />
         </Modal>
       </div>
     )

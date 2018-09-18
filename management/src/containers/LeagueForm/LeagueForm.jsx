@@ -17,9 +17,9 @@ const getColumns = (edit, del) => (
     {
       title: '操作',
       key: 'action',
-      render: () => (
+      render: (content, record) => (
         <span>
-          <a className="league-action" onClick={edit}>编辑</a>
+          <a className="league-action" onClick={() => edit(content, record)}>编辑</a>
           <a className="league-action" onClick={del}>删除</a>
         </span>
       ),
