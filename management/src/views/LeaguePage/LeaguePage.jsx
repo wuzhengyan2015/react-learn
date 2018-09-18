@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Modal } from 'antd'
 import LeagueForm from '../../containers/LeagueForm/LeagueForm'
 import LeagueEditForm from '../../containers/LeagueEditForm/LeagueEditForm'
+import Pagination from '../../components/Pagination/Pagination'
 import {
   searchLeagues, addLeague, getLeagues, putLeague, deleteLeague
 } from '../../redux/actions/league'
@@ -12,17 +13,37 @@ import './style.scss'
 const editFormWidth = 680
 
 @connect(
-  state => state,
+  state => ({ total: state.leagues.list.total }),
   dispatch => bindActionCreators({
     searchLeagues, addLeague, getLeagues, putLeague, deleteLeague
   }, dispatch)
 )
 class LeaguePage extends Component {
+  constructor(props) {
+    super(props)
+    this.pageSize = 10
+    this.page = 1
+  }
+
   state = {
     searchTxt: '',
     type: '',
     visible: false,
     initData: null
+  }
+
+  componentDidMount() {
+    this.getLeagues(this.page, this.pageSize)
+  }
+
+  getLeagues = (page, limit) => {
+    const { getLeagues } = this.props
+    getLeagues(page, limit)
+  }
+
+  handlePageTurn = (page, limit) => {
+    this.page = page
+    this.getLeagues(page, limit)
   }
 
   handleChagne = (e) => {
@@ -34,7 +55,7 @@ class LeaguePage extends Component {
   search = () => {
     const { searchLeagues } = this.props
     const { searchTxt } = this.state
-    searchLeagues(1, 10, searchTxt)
+    searchLeagues(this.page, this.pageSize, searchTxt)
   }
 
   addLeague = () => {
@@ -52,6 +73,17 @@ class LeaguePage extends Component {
     })
   }
 
+  deleteLeague = (id) => {
+    const { deleteLeague } = this.props
+    deleteLeague(id).then(() => {
+      this.setState({
+        visible: false,
+        initData: null
+      })
+      this.getLeagues(this.page, this.pageSize)
+    })
+  }
+
   handleOk = (params) => {
     const { addLeague, getLeagues } = this.props
     const { type } = this.state
@@ -63,7 +95,7 @@ class LeaguePage extends Component {
           visible: false,
           initData: null
         })
-        getLeagues(1, 10)
+        getLeagues(this.page, this.pageSize)
       })
     }
     const { id, ...rest } = params
@@ -72,7 +104,7 @@ class LeaguePage extends Component {
         visible: false,
         initData: null
       })
-      getLeagues(1, 10)
+      getLeagues(this.page, this.pageSize)
     })
   }
 
@@ -84,6 +116,7 @@ class LeaguePage extends Component {
   }
 
   render() {
+    const { total } = this.props
     const {
       searchTxt, visible, type, initData
     } = this.state
@@ -98,7 +131,14 @@ class LeaguePage extends Component {
             <a className="ui-btn" onClick={this.addLeague}>添加</a>
           </div>
         </div>
-        <LeagueForm edit={this.editLeague} />
+        <LeagueForm edit={this.editLeague} del={this.deleteLeague} />
+        <div className="form-pagination">
+          <Pagination
+            total={total}
+            pageSize={this.pageSize}
+            onChange={this.handlePageTurn}
+          />
+        </div>
         <Modal title={type === 'add' ? '增加联赛' : '编辑联赛'}
           visible={visible}
           onCancel={this.handleCancel}
