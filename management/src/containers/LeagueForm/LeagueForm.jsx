@@ -30,7 +30,6 @@ const getColumns = (edit, del) => (
 class LeagueForm extends Component {
   render() {
     const { leagues, edit, del } = this.props
-    console.log(leagues)
     return (
       <div className="league-form">
         <Table

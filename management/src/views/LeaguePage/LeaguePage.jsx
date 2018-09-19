@@ -29,7 +29,7 @@ class LeaguePage extends Component {
     searchTxt: '',
     type: '',
     visible: false,
-    initData: null
+    editData: null
   }
 
   componentDidMount() {
@@ -41,18 +41,7 @@ class LeaguePage extends Component {
     getLeagues(page, limit)
   }
 
-  handlePageTurn = (page, limit) => {
-    this.page = page
-    this.getLeagues(page, limit)
-  }
-
-  handleChagne = (e) => {
-    this.setState({
-      searchTxt: e.target.value
-    })
-  }
-
-  search = () => {
+  searchLeagues = () => {
     const { searchLeagues } = this.props
     const { searchTxt } = this.state
     searchLeagues(this.page, this.pageSize, searchTxt)
@@ -69,7 +58,7 @@ class LeaguePage extends Component {
     this.setState({
       type: 'edit',
       visible: true,
-      initData: record
+      editData: record
     })
   }
 
@@ -78,14 +67,14 @@ class LeaguePage extends Component {
     deleteLeague(id).then(() => {
       this.setState({
         visible: false,
-        initData: null
+        editData: null
       })
       this.getLeagues(this.page, this.pageSize)
     })
   }
 
-  handleOk = (params) => {
-    const { addLeague, getLeagues } = this.props
+  handleModalOk = (params) => {
+    const { addLeague } = this.props
     const { type } = this.state
     if (type === 'add') {
       return addLeague({
@@ -93,39 +82,50 @@ class LeaguePage extends Component {
       }).then(() => {
         this.setState({
           visible: false,
-          initData: null
+          editData: null
         })
-        getLeagues(this.page, this.pageSize)
+        this.getLeagues(this.page, this.pageSize)
       })
     }
     const { id, ...rest } = params
     return putLeague(id, rest).payload.then(() => {
       this.setState({
         visible: false,
-        initData: null
+        editData: null
       })
-      getLeagues(this.page, this.pageSize)
+      this.getLeagues(this.page, this.pageSize)
     })
   }
 
-  handleCancel = () => {
+  handleModalCancel = () => {
     this.setState({
       visible: false,
-      initData: null
+      editData: null
     })
+  }
+
+  handleChagne = (e) => {
+    this.setState({
+      searchTxt: e.target.value
+    })
+  }
+
+  handlePageTurn = (page, limit) => {
+    this.page = page
+    this.getLeagues(page, limit)
   }
 
   render() {
     const { total } = this.props
     const {
-      searchTxt, visible, type, initData
+      searchTxt, visible, type, editData
     } = this.state
     return (
       <div className="leaguePage">
         <div className="league-page__header">
           <div className="league-page__search">
             <input value={searchTxt} onChange={this.handleChagne} className="ui-input" type="text" />
-            <a className="ui-btn" onClick={this.search}>搜索</a>
+            <a className="ui-btn" onClick={this.searchLeagues}>搜索</a>
           </div>
           <div className="league-page__add">
             <a className="ui-btn" onClick={this.addLeague}>添加</a>
@@ -141,11 +141,15 @@ class LeaguePage extends Component {
         </div>
         <Modal title={type === 'add' ? '增加联赛' : '编辑联赛'}
           visible={visible}
-          onCancel={this.handleCancel}
+          onCancel={this.handleModalCancel}
           width={editFormWidth}
           footer={null}
         >
-          <LeagueEditForm initData={initData} onCancel={this.handleCancel} onOk={this.handleOk} />
+          <LeagueEditForm
+            editData={editData}
+            onCancel={this.handleModalCancel}
+            onOk={this.handleModalOk}
+          />
         </Modal>
       </div>
     )
