@@ -46,6 +46,10 @@ const api = {
   },
   deleteLeague(id) {
     return axios.delete(`${prefix}/leagues/${id}`)
+  },
+  getTeams(page = 1, limit = 99, query = '') {
+    return axios.all([axios.get(`${prefix}/teams?_page=${page}&_limit=${limit}&name_like=${query}`),
+      axios.get(`${prefix}/teams?_page=1&_limit=99&name_like=${query}`)]).then(axios.spread((items, total) => [items, total]))
   }
 }
 
