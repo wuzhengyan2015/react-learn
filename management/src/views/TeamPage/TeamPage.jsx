@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import TeamForm from '../../containers/TeamForm/TeamForm'
+import TeamTable from '../../containers/TeamTable/TeamTable'
 import { getTeams } from '../../redux/actions/teams'
 
 @connect(
@@ -28,7 +30,8 @@ class TeamPage extends Component {
   render() {
     return (
       <div>
-        TeamPage
+        <TeamTable />
+        <TeamForm />
       </div>
     )
   }

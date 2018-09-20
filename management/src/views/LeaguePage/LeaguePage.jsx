@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Modal } from 'antd'
-import LeagueForm from '../../containers/LeagueForm/LeagueForm'
+import LeagueTable from '../../containers/LeagueTable/LeagueTable'
 import LeagueEditForm from '../../containers/LeagueEditForm/LeagueEditForm'
 import Pagination from '../../components/Pagination/Pagination'
 import {
@@ -131,7 +131,7 @@ class LeaguePage extends Component {
             <a className="ui-btn" onClick={this.addLeague}>添加</a>
           </div>
         </div>
-        <LeagueForm edit={this.editLeague} del={this.deleteLeague} />
+        <LeagueTable edit={this.editLeague} del={this.deleteLeague} />
         <div className="form-pagination">
           <Pagination
             total={total}
