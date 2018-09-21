@@ -21,8 +21,8 @@ class LeagueEditForm extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, preState) {
-    if (nextProps.initData && !preState.name) {
-      const params = nextProps.initData
+    if (nextProps.editData && !preState.name) {
+      const params = nextProps.editData
       return {
         id: params.id,
         name: params.name,
@@ -37,7 +37,7 @@ class LeagueEditForm extends Component {
   }
 
   handleSubmit = () => {
-    const { onOk, initData } = this.props
+    const { onOk, editData } = this.props
     const {
       id, name, fullName, enName, country, createTime, teamNum
     } = this.state
@@ -52,7 +52,7 @@ class LeagueEditForm extends Component {
       create_time: createTime,
       team_num: teamNum
     }
-    if (initData) {
+    if (editData) {
       params.id = id
     }
     onOk(params).then(() => {

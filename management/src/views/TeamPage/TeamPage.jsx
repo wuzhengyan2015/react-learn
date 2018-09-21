@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Modal } from 'antd'
 import TeamForm from '../../containers/TeamForm/TeamForm'
 import TeamTable from '../../containers/TeamTable/TeamTable'
 import { getTeams } from '../../redux/actions/teams'
+import './style.scss'
+
+const addFormWidth = 680
 
 @connect(
   null,
@@ -14,6 +18,9 @@ import { getTeams } from '../../redux/actions/teams'
 class TeamPage extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      visible: false
+    }
     this.page = 1
     this.pageSize = 10
   }
@@ -27,11 +34,34 @@ class TeamPage extends Component {
     getTeams(this.page, this.pageSize)
   }
 
+  addTeams = () => {
+    this.setState({
+      visible: true
+    })
+  }
+
+  handleModalCancel = () => {
+    this.setState({ visible: false })
+  }
+
   render() {
+    const { visible } = this.state
     return (
       <div>
+        <div className="teams-page__header">
+          <div className="teams-page__add">
+            <a className="ui-btn" onClick={this.addTeams}>添加</a>
+          </div>
+        </div>
         <TeamTable />
-        <TeamForm />
+        <Modal title="添加球队"
+          visible={visible}
+          onCancel={this.handleModalCancel}
+          width={addFormWidth}
+          footer={null}
+        >
+          <TeamForm />
+        </Modal>
       </div>
     )
   }

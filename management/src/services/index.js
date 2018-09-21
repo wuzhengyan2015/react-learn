@@ -50,7 +50,17 @@ const api = {
   getTeams(page = 1, limit = 99, query = '') {
     return axios.all([axios.get(`${prefix}/teams?_page=${page}&_limit=${limit}&name_like=${query}`),
       axios.get(`${prefix}/teams?_page=1&_limit=99&name_like=${query}`)]).then(axios.spread((items, total) => [items, total]))
-  }
+  },
+  addTeams(params) {
+    params.id = 100 + Math.floor(Math.random() * 200)
+    return axios.post(`${prefix}/teams`, params)
+  },
+  putTeams(id, params) {
+    return axios.put(`${prefix}/teams/${id}`, params)
+  },
+  deleteTeams(id) {
+    return axios.delete(`${prefix}/teams/${id}`)
+  },
 }
 
 export default api

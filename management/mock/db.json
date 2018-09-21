@@ -120,12 +120,13 @@
   ],
   "teams": [
     {
-      "id": "t001",
       "name": "皇马",
       "full_name": "皇家马德里足球俱乐部",
       "en_name": "Real Madrid Club de Fútbol",
       "league": "西甲",
-      "create_time": 1902
+      "create_time": "1902",
+      "key": "t0011",
+      "id": "t001"
     },
     {
       "id": "t002",

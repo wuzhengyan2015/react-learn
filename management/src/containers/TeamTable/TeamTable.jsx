@@ -1,23 +1,37 @@
 import React, { Component } from 'react'
-import { Popconfirm, Table } from 'antd'
+import { Popconfirm, Table, Spin } from 'antd'
 import { connect } from 'react-redux'
-import EditableContext from './EditableContext'
+import { bindActionCreators } from 'redux'
+import { EditableContext } from './EditableContext.js'
+import { getTeams, putTeams } from '../../redux/actions/teams'
 import EditableFormRow from './EditableFormRow'
 import EditableCell from './EditableCell'
+import './style.scss'
 
 @connect(
-  state => ({ teams: state.teams })
+  state => ({ teams: state.teams }),
+  dispatch => bindActionCreators({ getTeams, putTeams }, dispatch)
 )
 class TeamTable extends Component {
   constructor(props) {
     super(props)
-    this.state = { editingKey: '' }
+    this.state = { editingKey: '', isLoading: false, data: [] }
     this.columns = [
-      { title: '名称', dataIndex: 'name', key: 'name' },
-      { title: '成立年份', dataIndex: 'create_time', key: 'create_time' },
-      { title: '全称', dataIndex: 'full_name', key: 'full_name' },
-      { title: '外文名', dataIndex: 'en_name', key: 'en_name' },
-      { title: '联赛', dataIndex: 'league', key: 'league' },
+      {
+        title: '名称', dataIndex: 'name', key: 'name', editable: true
+      },
+      {
+        title: '成立年份', dataIndex: 'create_time', key: 'create_time', editable: true
+      },
+      {
+        title: '全称', dataIndex: 'full_name', key: 'full_name', editable: true
+      },
+      {
+        title: '外文名', dataIndex: 'en_name', key: 'en_name', editable: true
+      },
+      {
+        title: '联赛', dataIndex: 'league', key: 'league', editable: true
+      },
       {
         title: 'operation',
         key: 'operation',
@@ -34,7 +48,7 @@ class TeamTable extends Component {
                         onClick={() => this.save(form, record.key)}
                         style={{ marginRight: 8 }}
                       >
-                        Save
+                        保存
                       </a>
                     )}
                   </EditableContext.Consumer>
@@ -42,17 +56,23 @@ class TeamTable extends Component {
                     title="Sure to cancel?"
                     onConfirm={() => this.cancel(record.key)}
                   >
-                    <a>Cancel</a>
+                    <a>取消</a>
                   </Popconfirm>
                 </span>
               ) : (
-                <a onClick={() => this.edit(record.key)}>Edit</a>
+                <a onClick={() => this.edit(record.key)}>编辑</a>
               )}
             </div>
           )
         },
       },
     ]
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    return {
+      data: nextProps.teams.list.items
+    }
   }
 
   isEditing = (record) => {
@@ -69,20 +89,21 @@ class TeamTable extends Component {
       if (error) {
         return
       }
-      const { teams: { list } } = this.props
-      const data = list.items
-      const newData = [...data]
-      const index = newData.findIndex(item => key === item.key)
+      const { getTeams, putTeams } = this.props
+      const { data } = this.state
+      const index = data.findIndex(item => key === item.key)
       if (index > -1) {
-        const item = newData[index]
-        newData.splice(index, 1, {
-          ...item,
-          ...row,
+        const newItem = { ...data[index], ...row }
+        const { id, ...rest } = newItem
+        const newData = data.splice(index, 1, newItem)
+        this.setState({ data: newData, isLoading: true })
+        putTeams(id, rest).then(() => {
+          getTeams()
+        }).finally(() => {
+          this.setState({ editingKey: '', isLoading: false })
         })
-        // this.setState({ data: newData, editingKey: '' })
       } else {
-        newData.push(row)
-        // this.setState({ data: newData, editingKey: '' })
+        this.setState({ editingKey: '' })
       }
     })
   }
@@ -92,7 +113,7 @@ class TeamTable extends Component {
   }
 
   render() {
-    const { teams: { list } } = this.props
+    const { data, isLoading } = this.state
     const components = {
       body: {
         row: EditableFormRow,
@@ -107,7 +128,7 @@ class TeamTable extends Component {
         ...col,
         onCell: record => ({
           record,
-          inputType: col.dataIndex === 'age' ? 'number' : 'text',
+          inputType: 'text',
           dataIndex: col.dataIndex,
           title: col.title,
           editing: this.isEditing(record),
@@ -115,13 +136,20 @@ class TeamTable extends Component {
       };
     })
     return (
-      <Table
-        components={components}
-        bordered
-        dataSource={list.items}
-        columns={columns}
-        rowClassName="editable-row"
-      />
+      <React.Fragment>
+        <Table
+          components={components}
+          bordered
+          dataSource={data}
+          columns={columns}
+          rowClassName="editable-row"
+        />
+        { isLoading && (
+          <div className="team-table__spin">
+            <Spin size="large" className="spin" />
+          </div>
+        ) }
+      </React.Fragment>
     )
   }
 }
