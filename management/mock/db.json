@@ -287,6 +287,21 @@
       "en_name": "Philips Sport Vereniging",
       "league": "荷甲",
       "create_time": 1913
+    },
+    {
+      "name": "西汉姆联",
+      "full_name": "西汉姆联足球俱乐部",
+      "en_name": "West Ham United Football Club",
+      "create_time": "1895",
+      "league": "英超",
+      "key": 243,
+      "id": 242
+    },
+    {
+      "name": "123",
+      "create_time": "2018",
+      "league": "德甲",
+      "id": 247
     }
   ],
   "players": [

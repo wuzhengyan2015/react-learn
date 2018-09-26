@@ -35,6 +35,7 @@ class LeagueForm extends Component {
         <Table
           dataSource={leagues.list.items}
           columns={getColumns(edit, del)}
+          pagination={{ pageSize: 20, position: 'top' }}
         />
       </div>
     )

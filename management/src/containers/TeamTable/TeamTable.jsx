@@ -33,7 +33,7 @@ class TeamTable extends Component {
         title: '联赛', dataIndex: 'league', key: 'league', editable: true
       },
       {
-        title: 'operation',
+        title: '操作',
         key: 'operation',
         render: (text, record) => {
           const editable = this.isEditing(record)
@@ -143,6 +143,7 @@ class TeamTable extends Component {
           dataSource={data}
           columns={columns}
           rowClassName="editable-row"
+          pagination={{ pageSize: 10 }}
         />
         { isLoading && (
           <div className="team-table__spin">

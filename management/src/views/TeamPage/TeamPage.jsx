@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { Modal } from 'antd'
 import TeamForm from '../../containers/TeamForm/TeamForm'
 import TeamTable from '../../containers/TeamTable/TeamTable'
-import { getTeams } from '../../redux/actions/teams'
+import { getTeams, addTeams } from '../../redux/actions/teams'
 import './style.scss'
 
 const addFormWidth = 680
@@ -12,7 +12,8 @@ const addFormWidth = 680
 @connect(
   null,
   dispatch => bindActionCreators({
-    getTeams
+    getTeams,
+    addTeams
   }, dispatch)
 )
 class TeamPage extends Component {
@@ -22,7 +23,7 @@ class TeamPage extends Component {
       visible: false
     }
     this.page = 1
-    this.pageSize = 10
+    this.pageSize = 99
   }
 
   componentDidMount() {
@@ -44,6 +45,14 @@ class TeamPage extends Component {
     this.setState({ visible: false })
   }
 
+  handleAddSubmit = (params) => {
+    const { getTeams, addTeams } = this.props
+    addTeams(params).then(() => {
+      this.handleModalCancel()
+      getTeams()
+    })
+  }
+
   render() {
     const { visible } = this.state
     return (
@@ -60,7 +69,7 @@ class TeamPage extends Component {
           width={addFormWidth}
           footer={null}
         >
-          <TeamForm />
+          { visible && <TeamForm submit={this.handleAddSubmit} /> }
         </Modal>
       </div>
     )

@@ -1,13 +1,26 @@
 import React, { Component } from 'react'
 import {
-  Form, DatePicker, InputNumber, Button
+  Form, DatePicker, Button, Input, Select
 } from 'antd'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { getLeagues } from '../../redux/actions/league'
 
 const FormItem = Form.Item
+const Option = Select.Option
 
+@connect(
+  state => ({ leagues: state.leagues }),
+  dispatch => bindActionCreators({ getLeagues }, dispatch)
+)
 class TeamForm extends Component {
+  componentDidMount = () => {
+    const { getLeagues } = this.props
+    getLeagues()
+  }
+
   handleSubmit = (e) => {
-    const { form } = this.props
+    const { form, submit } = this.props
     e.preventDefault()
     form.validateFields((err, fieldsValue) => {
       if (err) {
@@ -16,14 +29,14 @@ class TeamForm extends Component {
 
       const value = {
         ...fieldsValue,
-        'date-picker': fieldsValue['date-picker'].format('YYYY-MM-DD')
+        create_time: fieldsValue.create_time.format('YYYY')
       }
-      console.log(value)
+      submit(value)
     })
   }
 
   render() {
-    const { form: { getFieldDecorator } } = this.props
+    const { form: { getFieldDecorator }, leagues } = this.props
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -31,30 +44,70 @@ class TeamForm extends Component {
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 }
+        sm: { span: 12 }
       }
     }
     const config = {
-      rules: [{ type: 'object', required: true, message: 'Please select time!' }]
+      name: {
+        rules: [{ type: 'string', required: true, message: '请填写球队名称' }]
+      },
+      date: {
+        rules: [{ type: 'object', required: true, message: '请选择成立年份' }]
+      },
+      league: {
+        rules: [{ type: 'string', required: true, message: '请选择联赛' }]
+      }
     }
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormItem
           {...formItemLayout}
-          label="DatePicker"
+          label="名称"
         >
-          {getFieldDecorator('date-picker', config)(
-            <DatePicker />
+          {getFieldDecorator('name', config.name)(
+            <Input placeholder="请填写名称" />
           )}
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="InputNumber"
+          label="全称"
         >
-          {getFieldDecorator('input-number', { initialValue: 0 })(
-            <InputNumber />
+          {getFieldDecorator('full_name')(
+            <Input placeholder="请填写全称" />
           )}
-          <span className="ant-form-text"> teams</span>
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="外文名"
+        >
+          {getFieldDecorator('en_name')(
+            <Input placeholder="请填写外文名" />
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="成立年份"
+        >
+          {getFieldDecorator('create_time', config.date)(
+            <DatePicker placeholder="请选择日期" mode="date" />
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="联赛"
+        >
+          {getFieldDecorator('league', config.league)(
+            <Select placeholder="请选择联赛">
+              {
+                leagues.list.items.map(item => (
+                  <Option value={item.name}
+                    key={item.id}
+                  >{item.name}
+                  </Option>
+                ))
+              }
+            </Select>
+          )}
         </FormItem>
         <FormItem
           wrapperCol={{
@@ -62,7 +115,7 @@ class TeamForm extends Component {
             sm: { span: 16, offset: 8 },
           }}
         >
-          <Button type="primary" htmlType="submit">Submit</Button>
+          <Button type="primary" htmlType="submit">保存</Button>
         </FormItem>
       </Form>
     )
