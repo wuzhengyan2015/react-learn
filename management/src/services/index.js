@@ -61,6 +61,9 @@ const api = {
   deleteTeams(id) {
     return axios.delete(`${prefix}/teams/${id}`)
   },
+  getChampions() {
+    return axios.get(`${prefix}/UEFA_Champions`)
+  }
 }
 
 export default api
