@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Popconfirm } from 'antd'
 import Table from '../../components/Table/Table'
 import './style.scss'
 
@@ -17,7 +18,14 @@ const getColumns = (edit, del) => (
       render: (content, record) => (
         <span>
           <a className="league-action" onClick={() => edit(content, record)}>编辑</a>
-          <a className="league-action" onClick={() => del(record.id)}>删除</a>
+          <Popconfirm
+            title="确定删除？"
+            onConfirm={() => del(record.id)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <a>删除</a>
+          </Popconfirm>
         </span>
       ),
     }

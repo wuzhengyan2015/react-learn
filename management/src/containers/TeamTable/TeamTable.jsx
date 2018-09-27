@@ -3,14 +3,14 @@ import { Popconfirm, Table, Spin } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { EditableContext } from './EditableContext.js'
-import { getTeams, putTeams } from '../../redux/actions/teams'
+import { getTeams, putTeams, deleteTeams } from '../../redux/actions/teams'
 import EditableFormRow from './EditableFormRow'
 import EditableCell from './EditableCell'
 import './style.scss'
 
 @connect(
   state => ({ teams: state.teams }),
-  dispatch => bindActionCreators({ getTeams, putTeams }, dispatch)
+  dispatch => bindActionCreators({ getTeams, putTeams, deleteTeams }, dispatch)
 )
 class TeamTable extends Component {
   constructor(props) {
@@ -53,14 +53,26 @@ class TeamTable extends Component {
                     )}
                   </EditableContext.Consumer>
                   <Popconfirm
-                    title="Sure to cancel?"
+                    title="确定取消？"
                     onConfirm={() => this.cancel(record.key)}
+                    okText="Yes"
+                    cancelText="No"
                   >
                     <a>取消</a>
                   </Popconfirm>
                 </span>
               ) : (
-                <a onClick={() => this.edit(record.key)}>编辑</a>
+                <React.Fragment>
+                  <a className="team-operate__btn" onClick={() => this.edit(record.key)}>编辑</a>
+                  <Popconfirm
+                    title="确定删除？"
+                    onConfirm={() => this.deleteTeam(record.id)}
+                    okText="Yes"
+                    cancelText="No"
+                  >
+                    <a>删除</a>
+                  </Popconfirm>
+                </React.Fragment>
               )}
             </div>
           )
@@ -82,6 +94,19 @@ class TeamTable extends Component {
 
   edit(key) {
     this.setState({ editingKey: key })
+  }
+
+  deleteTeam(id) {
+    const { deleteTeams, getTeams } = this.props
+    this.setState({
+      isLoading: true
+    })
+    deleteTeams(id).then(() => {
+      this.setState({
+        isLoading: false
+      })
+      getTeams()
+    })
   }
 
   save(form, key) {
