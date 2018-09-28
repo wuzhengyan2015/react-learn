@@ -31,8 +31,8 @@ class ChampionChart extends Component {
     const teamsName = []
     const championsNum = []
     champions.list.forEach((item) => {
-      teamsName.push(item.team)
-      championsNum.push(item.champions)
+      teamsName.unshift(item.team)
+      championsNum.unshift(item.champions)
     })
     myChart.setOption({
       title: {
@@ -40,9 +40,10 @@ class ChampionChart extends Component {
       },
       tooltip: {},
       xAxis: {
+      },
+      yAxis: {
         data: teamsName
       },
-      yAxis: {},
       series: [{
         name: '夺冠数',
         type: 'bar',
