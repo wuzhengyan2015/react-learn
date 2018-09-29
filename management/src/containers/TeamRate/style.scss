@@ -1,0 +1,24 @@
+.team-rate {
+  height: 100%;
+}
+.team-rate__title {
+  width: 100%;
+  font-weight: bold;
+}
+
+.team-rate__content {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 18px);
+  align-content: space-around; 
+  flex-wrap: wrap;
+}
+
+
+.team-rate__row {
+  flex-basis: 50%;
+  text-align: center;
+  .row__name {
+    margin-right: 10px;
+  }
+}

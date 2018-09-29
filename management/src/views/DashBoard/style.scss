@@ -18,9 +18,13 @@
 
 .dashboard__champion-carousel {
   grid-area: area2;
+  .carousel__title {
+    font-weight: bold;
+    margin-bottom: 20px
+  }
   .carousel-warpper {
     width: 600px;
-    height: 375px;
+    height: 350px;
     margin: 0 auto;
     border-radius: 10px;
     overflow: hidden;
@@ -34,6 +38,6 @@
   grid-area: area3
 }
 
-.dashboard__champion-chart4 {
+.dashboard__team-rate {
   grid-area: area4
 }

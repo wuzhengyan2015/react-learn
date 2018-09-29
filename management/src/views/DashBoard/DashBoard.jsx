@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Slider from 'react-slick'
 import ChampionChart from '../../containers/ChampionChart/ChampionChart'
 import TeamPie from '../../containers/TeamPie/TeamPie'
+import TeamRate from '../../containers/TeamRate/TeamRate'
 import './style.scss'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -25,6 +26,7 @@ class DashBoard extends Component {
           <ChampionChart />
         </div>
         <div className="dashboard__panel dashboard__champion-carousel">
+          <h3 className="carousel__title">球员集锦</h3>
           <div className="carousel-warpper">
             <Slider {...settings}>
               <img src={player1} alt="" />
@@ -36,7 +38,9 @@ class DashBoard extends Component {
         <div className="dashboard__panel dashboard__team-pie">
           <TeamPie />
         </div>
-        <div className="dashboard__panel dashboard__champion-chart4"></div>
+        <div className="dashboard__panel dashboard__team-rate">
+          <TeamRate />
+        </div>
       </div>
     )
   }
