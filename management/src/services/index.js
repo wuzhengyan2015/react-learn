@@ -63,6 +63,9 @@ const api = {
   },
   getChampions() {
     return axios.get(`${prefix}/UEFA_Champions`)
+  },
+  getPlayers() {
+    return axios.get(`${prefix}/players`)
   }
 }
 
