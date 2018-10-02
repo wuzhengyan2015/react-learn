@@ -64,8 +64,8 @@ const api = {
   getChampions() {
     return axios.get(`${prefix}/UEFA_Champions`)
   },
-  getPlayers() {
-    return axios.get(`${prefix}/players`)
+  getPlayers(page = 1, limit = 99) {
+    return axios.get(`${prefix}/players?_page=${page}&_limit=${limit}`)
   }
 }
 

@@ -24,7 +24,7 @@ class PlayerLazyLoad extends Component {
     const { getPlayers } = this.props
     getPlayers()
     this.setState({
-      scrollEl: findParent(this.scrollRef.current, 'player-tabs')
+      scrollEl: findParent(this.scrollRef.current, 'ui-main-content')
     })
   }
 
