@@ -50,7 +50,7 @@ class LeagueEditForm extends Component {
       en_name: enName,
       country,
       create_time: createTime,
-      team_num: teamNum
+      team_num: teamNum,
     }
     if (editData) {
       params.id = id
@@ -93,9 +93,15 @@ class LeagueEditForm extends Component {
     onCancel()
   }
 
+  handleFileChange = (e) => {
+    this.setState({
+      logoText: e.target.files[0].name
+    })
+  }
+
   render() {
     const {
-      name, fullName, enName, country, createTime, teamNum,
+      name, fullName, enName, country, createTime, teamNum, logoText,
       lackName, lackCountry, lackCreateTime, lackTeamNum
     } = this.state
     return (
@@ -134,6 +140,13 @@ class LeagueEditForm extends Component {
           <label htmlFor="leagueTeamNum" className="label require">
             <span className="label-name">球队数：</span>
             <input value={teamNum} id="leagueTeamNum" onChange={e => this.handleChange('teamNum', e)} className={`input ${lackTeamNum && 'lack'}`} type="text" />
+          </label>
+        </div>
+        <div className="form__group">
+          <label htmlFor="leagueLogo" className="label">
+            <span className="label-name">球队Logo：</span>
+            <span className="input">{logoText}</span>
+            <input id="leagueLogo" accept="image/*" onChange={this.handleFileChange} className="file_input" type="file" />
           </label>
         </div>
         <div className="form__group clearfix">

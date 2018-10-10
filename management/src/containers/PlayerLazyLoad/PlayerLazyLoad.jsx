@@ -38,9 +38,11 @@ class PlayerLazyLoad extends Component {
             <div key={player.id} className="player-info-wrapper">
               <div className="player-info clearfix">
                 <div className="player-info__img">
+                  {scrollEl && (
                   <LazyLoad height={365} container={scrollEl}>
                     <img src={player.picture} alt="" />
                   </LazyLoad>
+                  ) }
                 </div>
                 <p className="player-info__detail">{player.name}</p>
                 <p className="player-info__detail">{player.shirt_num}</p>

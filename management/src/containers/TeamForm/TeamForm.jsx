@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-  Form, DatePicker, Button, Input, Select
+  Form, DatePicker, Button, Input, Select, Upload, Icon
 } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -9,11 +9,21 @@ import { getLeagues } from '../../redux/actions/league'
 const FormItem = Form.Item
 const Option = Select.Option
 
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
+
 @connect(
   state => ({ leagues: state.leagues }),
   dispatch => bindActionCreators({ getLeagues }, dispatch)
 )
 class TeamForm extends Component {
+  state = {
+    loading: false,
+  }
+
   componentDidMount = () => {
     const { getLeagues } = this.props
     getLeagues()
@@ -35,8 +45,29 @@ class TeamForm extends Component {
     })
   }
 
+  handleChange = (info) => {
+    if (info.file.status === 'uploading') {
+      this.setState({ loading: true });
+      return;
+    }
+    if (info.file.status === 'done') {
+      // Get this url from response in real world.
+      getBase64(info.file.originFileObj, imageUrl => this.setState({
+        imageUrl,
+        loading: false,
+      }));
+    }
+  }
+
   render() {
     const { form: { getFieldDecorator }, leagues } = this.props
+    const { imageUrl, loading } = this.state
+    const uploadButton = (
+      <div>
+        <Icon type={loading ? 'loading' : 'plus'} />
+        <div className="ant-upload-text">Upload</div>
+      </div>
+    )
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -107,6 +138,23 @@ class TeamForm extends Component {
                 ))
               }
             </Select>
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="队标"
+        >
+          {getFieldDecorator('team_logo')(
+            <Upload
+              name="avatar"
+              listType="picture-card"
+              className="avatar-uploader"
+              showUploadList={false}
+              action="//jsonplaceholder.typicode.com/posts/"
+              onChange={this.handleChange}
+            >
+              {imageUrl ? <img src={imageUrl} alt="avatar" /> : uploadButton}
+            </Upload>
           )}
         </FormItem>
         <FormItem
