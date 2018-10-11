@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import _ from 'lodash';
-import { getScrollPlayers } from '../../redux/actions/players';
+import { getScrollPlayers, getPlayers } from '../../redux/actions/players';
 import { findParent } from '../../utils/utils.js';
 import './style.scss';
 
@@ -10,11 +10,12 @@ const before = 100;
 
 @connect(
   state => ({ players: state.players }),
-  dispatch => bindActionCreators({ getScrollPlayers }, dispatch)
+  dispatch => bindActionCreators({ getScrollPlayers, getPlayers }, dispatch)
 )
 class PlayerSrollLoad extends Component {
   state = {
-    players: []
+    players: [],
+    scrollStatus: ''
   };
 
   constructor(props) {
@@ -42,6 +43,7 @@ class PlayerSrollLoad extends Component {
     this.scrollEl = findParent(this.scrollRef.current, 'ui-main-content');
     this.scrollEl.addEventListener('scroll', this.handleScroll);
     getScrollPlayers(this.page, this.size);
+    getPlayers()
   }
 
   componentWillUnmount() {
@@ -49,20 +51,36 @@ class PlayerSrollLoad extends Component {
   }
 
   handleScroll = () => {
-    const { getScrollPlayers } = this.props
+    const { getScrollPlayers, players } = this.props
+    const { players: curPlayer } = this.state
     const clientHeight = this.scrollEl.clientHeight
     const scrollTop = this.scrollEl.scrollTop
     const scrollHeight = this.scrollEl.scrollHeight
+    this.total = players.list.length
+    this.curTotal = curPlayer.length
+    if (this.total === this.curTotal) {
+      this.scrollEl.removeEventListener('scroll', this.handleScroll)
+      this.setState({
+        scrollStatus: '已经到底啦...'
+      })
+      return
+    }
     if (clientHeight + scrollTop >= scrollHeight - before && this.loadMore) {
       this.loadMore = false
+      this.setState({
+        scrollStatus: 'loading'
+      })
       getScrollPlayers(++this.page, this.size).then(() => {
         this.loadMore = true
+        this.setState({
+          scrollStatus: ''
+        })
       })
     }
   };
 
   render() {
-    const { players } = this.state;
+    const { players, scrollStatus } = this.state;
     return (
       <div ref={this.scrollRef}>
         {players.map(player => (
@@ -79,6 +97,7 @@ class PlayerSrollLoad extends Component {
             </div>
           </div>
         ))}
+        <div className="scrollStatus">{scrollStatus}</div>
       </div>
     );
   }

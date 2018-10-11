@@ -38,7 +38,7 @@ class LazyLoad extends Component {
   onScroll = () => {
     const { offset } = this.props
     const box = this.elRef.current.getBoundingClientRect()
-    if (this.scrollEl.scrollTop + this.scrollEl.clientHeight > box.top + offset) {
+    if (this.scrollEl.clientHeight > box.top + offset) {
       this.setState({
         visible: true
       })

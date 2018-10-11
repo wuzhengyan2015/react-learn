@@ -5,6 +5,7 @@ import echarts from 'echarts/lib/echarts'
 import 'echarts/lib/chart/bar'
 import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/title'
+import _ from 'lodash'
 import { getChampions } from '../../redux/actions/champions'
 import './style.scss'
 
@@ -16,25 +17,35 @@ class ChampionChart extends Component {
   constructor(props) {
     super(props)
     this.chartRef = React.createRef()
+    this.resizeChart = _.throttle(this.resizeChart, 200)
   }
 
   componentDidMount() {
     const { getChampions } = this.props
     getChampions().then(() => {
       this.drawChart()
+      window.addEventListener('resize', this.resizeChart)
     })
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resizeChart)
+  }
+
+  resizeChart = () => {
+    this.myChart.resize()
   }
 
   drawChart = () => {
     const { champions } = this.props
-    const myChart = echarts.init(this.chartRef.current)
     const teamsName = []
     const championsNum = []
+    this.myChart = echarts.init(this.chartRef.current)
     champions.list.forEach((item) => {
       teamsName.unshift(item.team)
       championsNum.unshift(item.champions)
     })
-    myChart.setOption({
+    this.myChart.setOption({
       title: {
         text: '欧冠冠军数'
       },
