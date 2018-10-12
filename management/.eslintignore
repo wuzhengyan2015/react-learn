@@ -1,5 +1,5 @@
 src/i18n/*.js
 mock
-__test__/*
+__tests__/*
 dist/*
 node_modules
