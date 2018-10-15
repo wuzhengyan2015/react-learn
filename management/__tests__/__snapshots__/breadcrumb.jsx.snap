@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`面包屑的渲染 1`] = `
+exports[`<BreadCrumb /> 面包屑的渲染 1`] = `
 <div
   className="ui-breadcrumb"
 >
