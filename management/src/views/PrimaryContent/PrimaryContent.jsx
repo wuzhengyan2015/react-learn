@@ -9,28 +9,30 @@ import './style.scss'
 
 const DashBoardLoadable = Loadable({
   loader: () => import('views/DashBoard/DashBoard'),
-  loading: <div>Loading</div>
+  loading: () => <div>loading</div>
 })
+
+console.log(DashBoardLoadable)
 
 const DashBoard = () => <DashBoardLoadable />
 
 const LeaguePageLoadable = Loadable({
   loader: () => import('views/LeaguePage/LeaguePage'),
-  loading: <div>Loading</div>
+  loading: () => <div>loading</div>
 })
 
 const LeaguePage = () => <LeaguePageLoadable />
 
 const TeamPageLoadable = Loadable({
   loader: () => import('views/TeamPage/TeamPage'),
-  loading: <div>Loading</div>
+  loading: () => <div>loading</div>
 })
 
 const TeamPage = () => <TeamPageLoadable />
 
 const PlayerPageLoadable = Loadable({
   loader: () => import('views/PlayerPage/PlayerPage'),
-  loading: <div>Loading</div>
+  loading: () => <div>loading</div>
 })
 
 const PlayerPage = () => <PlayerPageLoadable />
