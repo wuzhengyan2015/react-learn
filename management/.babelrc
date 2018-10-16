@@ -4,6 +4,7 @@
     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true}],
     "react-hot-loader/babel",
     "transform-decorators-legacy",
+    "syntax-dynamic-import",
     [
       "transform-runtime",
       {

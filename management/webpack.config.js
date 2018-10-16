@@ -1,12 +1,16 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'build.js',
+    chunkFilename: devMode ? '[name].[hash].js' : '[name].[chucnkhash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -29,24 +33,34 @@ module.exports = {
       },
       {
         test: /\.(css)$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader'
+        ],
       },
       {
         test: /\.(scss)$/,
         include: path.resolve(__dirname, 'src'),
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ],
       },
       {
         test: /\.(less)$/,
-        use: ['style-loader', 'css-loader', {
-          loader: 'less-loader',
-          options: {
-            javascriptEnabled: true,
-            modifyVars: {
-              'font-size-base': '16px'
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true,
+              modifyVars: {
+                'font-size-base': '16px'
+              }
             }
-          }
-        }],
+          }],
       },
       {
         test: /\.(png|jpg|gif|ttf|eot|woff|svg)$/,
@@ -55,6 +69,8 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
+              name: '[name].[hash].[ext]',
+              outputPath: 'images/'
             },
           },
         ],
@@ -66,6 +82,11 @@ module.exports = {
       template: './src/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(['dist']),
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+    })
   ],
   devServer: {
     contentBase: './',
