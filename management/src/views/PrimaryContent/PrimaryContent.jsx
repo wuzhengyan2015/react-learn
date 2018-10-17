@@ -2,40 +2,27 @@ import React from 'react'
 import {
   Switch, Route, withRouter, Link
 } from 'react-router-dom'
-import Loadable from 'react-loadable';
-import { Layout } from 'antd'
+import Loadable from 'react-loadable'
+import { Layout, Spin } from 'antd'
 import BreadCrumb from '../../components/BreadCrumb/index'
 import './style.scss'
 
-const DashBoardLoadable = Loadable({
-  loader: () => import('views/DashBoard/DashBoard'),
-  loading: () => <div>loading</div>
+const DashBoard = Loadable({
+  loader: () => import(/* webpackChunkName: "DashBoard" */'views/DashBoard/DashBoard'),
+  loading: () => <Spin size="large" />
 })
-
-console.log(DashBoardLoadable)
-
-const DashBoard = () => <DashBoardLoadable />
-
-const LeaguePageLoadable = Loadable({
-  loader: () => import('views/LeaguePage/LeaguePage'),
-  loading: () => <div>loading</div>
+const LeaguePage = Loadable({
+  loader: () => import(/* webpackChunkName: "LeaguePage" */'views/LeaguePage/LeaguePage'),
+  loading: () => <Spin size="large" />
 })
-
-const LeaguePage = () => <LeaguePageLoadable />
-
-const TeamPageLoadable = Loadable({
-  loader: () => import('views/TeamPage/TeamPage'),
-  loading: () => <div>loading</div>
+const TeamPage = Loadable({
+  loader: () => import(/* webpackChunkName: "TeamPage" */'views/TeamPage/TeamPage'),
+  loading: () => <Spin size="large" />
 })
-
-const TeamPage = () => <TeamPageLoadable />
-
-const PlayerPageLoadable = Loadable({
-  loader: () => import('views/PlayerPage/PlayerPage'),
-  loading: () => <div>loading</div>
+const PlayerPage = Loadable({
+  loader: () => import(/* webpackChunkName: "PlayerPage" */'views/PlayerPage/PlayerPage'),
+  loading: () => <Spin size="large" />
 })
-
-const PlayerPage = () => <PlayerPageLoadable />
 
 const { Content } = Layout
 const routes = [{

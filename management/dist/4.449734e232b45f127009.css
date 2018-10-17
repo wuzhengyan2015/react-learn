@@ -1,0 +1,64 @@
+.chart-wrapper {
+  width: 100%;
+  height: 400px;
+  text-align: center; }
+
+
+.team-rate {
+  height: 100%; }
+
+.team-rate__title {
+  width: 100%;
+  font-weight: bold; }
+
+.team-rate__content {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 18px);
+  align-content: space-around;
+  flex-wrap: wrap; }
+
+.team-rate__row {
+  flex-basis: 50%;
+  text-align: center; }
+  .team-rate__row .row__name {
+    margin-right: 10px; }
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'area1 area2' 'area3 area4';
+  grid-gap: 20px; }
+
+.dashboard__panel {
+  min-width: 360px;
+  padding: 20px;
+  background-color: #f0f2f5;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.4); }
+
+.dashboard__champion-chart {
+  grid-area: area1; }
+
+.dashboard__champion-carousel {
+  grid-area: area2; }
+  .dashboard__champion-carousel .carousel__title {
+    font-weight: bold;
+    margin-bottom: 20px; }
+  .dashboard__champion-carousel .carousel-warpper {
+    width: 600px;
+    height: 350px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden; }
+    .dashboard__champion-carousel .carousel-warpper .slick-dots {
+      bottom: 0; }
+
+.dashboard__team-pie {
+  grid-area: area3; }
+
+.dashboard__team-rate {
+  grid-area: area4; }
+
+
+/*# sourceMappingURL=4.449734e232b45f127009.css.map*/
