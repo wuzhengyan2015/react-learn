@@ -1,20 +1,23 @@
 const path = require('path')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    app: './src/index.js',
+    vendor: ['react', 'react-dom']
+  },
   output: {
-    filename: 'build.js',
-    chunkFilename: devMode ? '[name].[hash].js' : '[name].[chucnkhash].js',
+    filename: devMode ? '[name].[hash].js' : '[name].[chunkhash].js',
+    chunkFilename: devMode ? '[name].[hash].js' : '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
-  devtool: 'inline-source-map',
+  devtool: devMode ? 'eval-source-map' : 'source-map',
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
@@ -81,13 +84,29 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin(['dist']),
+    new BundleAnalyzerPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin('dist/**/*.*', {
+      root: __dirname,
+      verbose: true,
+      dry: false
+    }),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     })
   ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          name: 'vendor',
+          chunks: 'initial',
+          minChunks: 2
+        }
+      }
+    }
+  },
   devServer: {
     contentBase: './',
     historyApiFallback: true,
