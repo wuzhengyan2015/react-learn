@@ -3,3 +3,4 @@ mock
 __tests__/*
 dist/*
 node_modules
+webpack.*

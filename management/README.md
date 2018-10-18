@@ -21,5 +21,4 @@ h5-template-show
 Token存在cookie中，随API请求发给服务端，无权限情况下返回401，前端跳转login
 
 
-// TODO merge webpack config 
 // summary splitchunk
