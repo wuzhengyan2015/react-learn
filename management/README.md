@@ -21,4 +21,29 @@ h5-template-show
 Token存在cookie中，随API请求发给服务端，无权限情况下返回401，前端跳转login
 
 
-// summary splitchunk
+## webpack splitChunk
+
+```js
+entry: {
+  app: './src/index.js',
+  vendor: ['react', 'react-dom']
+},
+optimization: {
+  splitChunks: {
+    cacheGroups: {
+      vendor: {
+        name: 'vendor',
+        chunks: 'initial',
+        minChunks: 2
+      }
+    }
+  }
+}
+```
+
+目前打包，按需加载模块单独打包出来，react库也单独打包出来。
+
+splitChunks默认使用aysnc（处理按需加载模块）
+
+缓存组的vendor使用initial（效果入口的文件的react库会被提取，使用all的话会把按需加载模块的公共部分也加载进来）。同时这边注意设置minChunks, 不然app里面内容也全部被打包到vendor了。
+
