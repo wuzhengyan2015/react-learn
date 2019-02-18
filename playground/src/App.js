@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ReduxActionsDemo from './redux-actions/index'
-import ReduxSagasDemo from './redux-sagas/index.jsx'
-import ReduxPromiseDemo from './redux-promise/index'
-import axios from 'axios'
-import BaseContext from './context/BaseContext'
-import Modal from './portals/Portals'
-import Flex from './flex/Flex'
-import Grid from './grid/grid'
+import ReduxDemo from './redux/reduxDemo'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <DemoWithHeader />
+        <ReduxDemo />
       </div>
     )
   }
 }
 
-// axios.get('http://localhost:3004/posts').then((data) => {
-//   console.log(data)
-// })
 
 function getDisplayName(component) {
   console.log(component.displayName, component.name)
@@ -41,20 +31,6 @@ function withHeader(WrappedComponent) {
     }
   }
 }
-function withHeader2 (WrapperComponent) {
-  return class HOC extends Component {
-      static displayName = `HOC${WrapperComponent.displayName || WrapperComponent.name || 'Component'}`
-      render() {
-          return (
-              <div>
-                  <h2>title</h2>
-                  <WrapperComponent {...this.props} />
-              </div>
-          )
-      }
-  }
-}
-
 
 class Demo extends Component {
   render() {
@@ -65,8 +41,7 @@ class Demo extends Component {
     );
   }
 }
-const DemoWithHeader = withHeader2(Demo)
+const DemoWithHeader = withHeader(Demo)
 
-const EnhanceDemo = withHeader(Demo);
 
 export default App;
