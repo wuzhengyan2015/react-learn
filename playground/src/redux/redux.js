@@ -17,4 +17,15 @@ const createStore = (reducer, preloadState) => {
   return { getState, dispatch, subscribe }
 }
 
-export { createStore }
+const combineReducers = (reducers) => {
+  return (state = {}, action) => {
+    const combineState = {}
+    Object.keys(reducers).reduce((accumulate, key) => {
+      accumulate[key] = reducers[key](state[key], action)
+      return accumulate
+    }, combineState)
+    return combineState
+  }
+}
+
+export { createStore, combineReducers }
